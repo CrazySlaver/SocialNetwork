@@ -1,8 +1,190 @@
-﻿@model dynamic
+﻿@model MusicWave.Models.CustomUser
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Registration";
+}
+<h2>Registration</h2>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
+
+@*<div id="tooltip">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style>
+        /* Tooltip */
+        .test + .tooltip > .tooltip-inner {
+            background-color: #8AC007;
+            color: #FFFFFF;
+            border: 1px solid green;
+            padding: 15px;
+            font-size: 20px;
+        }
+        /* Tooltip on top */
+        .test + .tooltip.top > .tooltip-arrow {
+            border-top: 5px solid green;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+</div>
+
+<div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 1%;"></div>
+</div>*@
+<script type="text/javascript">
+    $(function () {
+
+        $(".wizard-step:first").fadeIn(); // show first step
+
+
+        // attach backStep button handler
+        // hide on first step
+        $("#back-step").hide().click(function () {
+            var $step = $(".wizard-step:visible"); // get current step
+            if ($step.prev().hasClass("wizard-step")) { // is there any previous step?
+                $step.hide().prev().fadeIn(); // show it and hide current step
+
+                // disable backstep button?
+                if (!$step.prev().prev().hasClass("wizard-step")) {
+                    $("#back-step").hide();
+                }
+            }
+        });
+
+
+        // attach nextStep button handler
+        $("#next-step").click(function () {
+
+            var $step = $(".wizard-step:visible"); // get current step
+
+            var validator = $("form").validate();
+            var anyError = false;
+            $step.find("input").each(function () {
+                if (!validator.element(this)) {
+                    anyError = true;
+                }
+            });
+            if (anyError)
+                return false;
+
+
+
+            if ($step.next().hasClass("confirm")) {
+                $.post("/account/register", $("form").serialize(), function (r) {
+                    $(".wizard-step.confirm".html(r));
+                });
+            }
+            if ($step.next().hasClass("wizard-step")) { // is there any next step?
+                $step.hide().next().fadeIn();  // show it and hide current step
+                $("#back-step").show();   // recall to show backStep button
+            }
+
+            else { // this is last step, submit form
+                $("form").submit();
+            }
+        });
+
+    });
+
+
+</script>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @id = "formReg" }))
+{
+    <br />
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <fieldset>
+            <div class="wizard-step">
+                <h2>Step 1</h2>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new {@class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Email, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new {@class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Password, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Password, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new {@class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ConfirmPassword, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="wizard-step">
+                <h4>Step 2</h4>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new {@class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FirstName, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName, htmlAttributes: new {@class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LastName, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.LastName, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Sex, htmlAttributes: new {@class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Sex, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Sex, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="file" name="file" id="file" data-toggle="tooltip" data-placement="top" class="test" title="sDVasdvsvasdv" />
+                    @Html.ValidationMessageFor(model => model.ImageContentType, "", new {@class = "text-danger"})
+                </div>
+            </div>
+
+            <div class="wizard-step">
+                <h4>Step 3</h4>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new {@class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Description, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Description, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+            </div>
+
+            <div class="wizard-step confirm"></div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="button" id="back-step" name="back-step" value="< Back" class="btn btn-default" />
+                        <input type="button" id="next-step" name="next-step" value="Next >" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
 }
 
-<h2>title</h2>
+<style>
+    .wizard-step {
+        display: none;
+    }
+</style>
+
+

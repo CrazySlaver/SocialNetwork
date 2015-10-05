@@ -10,11 +10,23 @@ namespace MusicWave.Controllers
     {
         private readonly UserManipulation _user = new UserManipulation();
 
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public ActionResult Register(HttpPostedFileBase file, [ModelBinder(typeof(UserModelBinder))] CustomUser model)
+        public ActionResult Register(CustomUser user)
+        {
+            if (ModelState.IsValid)
+                return View("SignIn", user);
+            return View();
+        }
+
+        public ActionResult SignIn(HttpPostedFileBase file, [ModelBinder(typeof (UserModelBinder))] CustomUser model)
         {
             _user.AddUserToDb(model);
-
             return View();
         }
     }
