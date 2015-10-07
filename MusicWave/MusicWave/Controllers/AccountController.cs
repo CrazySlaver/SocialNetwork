@@ -17,17 +17,22 @@ namespace MusicWave.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(CustomUser user)
+        public ActionResult Register(HttpPostedFileBase file, [ModelBinder(typeof(UserModelBinder))] CustomUser model)
         {
-            if (ModelState.IsValid)
-                return View("SignIn", user);
-            return View();
+            _user.AddUserToDb(model);
+            return View("SignIn", model);
+            //if (ModelState.IsValid)
+            //{
+               
+            //}
+            //return View("Register", model);
         }
-
+        [HttpPost]
         public ActionResult SignIn(HttpPostedFileBase file, [ModelBinder(typeof (UserModelBinder))] CustomUser model)
         {
             _user.AddUserToDb(model);
             return View();
         }
+        
     }
 }

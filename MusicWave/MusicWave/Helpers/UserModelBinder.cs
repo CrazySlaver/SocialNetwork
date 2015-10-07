@@ -12,14 +12,14 @@ namespace MusicWave.Helpers
         {
             var user = base.BindModel(controllerContext, bindingContext) as CustomUser;
 
-            var request = controllerContext.HttpContext.Request;
-            var files = request.Files;
+            HttpRequestBase request = controllerContext.HttpContext.Request;
+            HttpFileCollectionBase files = request.Files;
 
             if (files.Count == 0)
                 return user;
 
-            var file = files.Get(0);
-            var checkFileResult = CheckFile(file);
+            HttpPostedFileBase file = files.Get(0);
+            string checkFileResult = CheckFile(file);
             if (checkFileResult != "")
             {
                 bindingContext.ModelState.AddModelError("ImageContentType", checkFileResult);

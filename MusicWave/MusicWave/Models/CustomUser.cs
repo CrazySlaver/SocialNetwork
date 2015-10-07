@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MusicWave.Models
@@ -37,12 +38,14 @@ namespace MusicWave.Models
         [Required(ErrorMessage = "Email should not be empty")]
         [RegularExpression(@"^\S+@\S+$", ErrorMessage = "Wrong email format. Try new one")]
         [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email")]
         public string Email { get; set; }
         
         [Required]
         [DataType(DataType.Password)]
         [MinLength(5)]
         [MaxLength(100)]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
         [Required]
@@ -51,8 +54,11 @@ namespace MusicWave.Models
         public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "Image should not be empty")]
-        [DataType(DataType.Password)]
+        
         public string ImageBase64 { get; set; }
+        [Required(ErrorMessage = "Image should not be empty")]
         public string ImageContentType { get; set; }
+
+       
     }
 }
