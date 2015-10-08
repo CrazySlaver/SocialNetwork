@@ -17,8 +17,8 @@ namespace MusicWave.Models
         public System.Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public System.DateTime Age { get; set; }
-        public bool Sex { get; set; }
+        public Nullable<System.DateTime> Age { get; set; }
+        public Nullable<bool> Sex { get; set; }
         public string City { get; set; }
         public string Description { get; set; }
         public string Email { get; set; }

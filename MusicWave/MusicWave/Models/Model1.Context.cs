@@ -13,10 +13,10 @@ namespace MusicWave.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WorldDBEntities : DbContext
+    public partial class WorldDBEntities1 : DbContext
     {
-        public WorldDBEntities()
-            : base("name=WorldDBEntities")
+        public WorldDBEntities1()
+            : base("name=WorldDBEntities1")
         {
         }
     

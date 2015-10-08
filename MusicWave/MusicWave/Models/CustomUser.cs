@@ -8,24 +8,18 @@ namespace MusicWave.Models
     {
         public Guid Id { get; set; }
 
-        [Required(ErrorMessage = "Type your first name")]
         [MinLength(2)]
         [MaxLength(20)]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Type your last name")]
         [MinLength(2)]
         [MaxLength(20)]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Enter your age")]
-        //[DataType(DataType.DateTime)]
         public DateTime Age { get; set; }
         
-        [Required]
         public bool Sex { get; set; }
 
-        [Required(ErrorMessage = "Type your city")]
         [MinLength(2)]
         [MaxLength(20)]
         public string City { get; set; }
@@ -53,10 +47,8 @@ namespace MusicWave.Models
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
 
-        [Required(ErrorMessage = "Image should not be empty")]
-        
         public string ImageBase64 { get; set; }
-        [Required(ErrorMessage = "Image should not be empty")]
+
         public string ImageContentType { get; set; }
 
        

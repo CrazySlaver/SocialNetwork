@@ -5,49 +5,24 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="WorldDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'B6B5CE4E-1542-4E82-BED3-806F946F0DC3.dbo.User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="LastName" />
-            <PropertyRef Name="Age" />
-            <PropertyRef Name="Sex" />
-            <PropertyRef Name="City" />
-            <PropertyRef Name="Email" />
-            <PropertyRef Name="Password" />
-            <PropertyRef Name="ImageBase64" />
-            <PropertyRef Name="ImageContentType" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Age" Type="date" Nullable="false" />
-          <Property Name="Sex" Type="bit" Nullable="false" />
-          <Property Name="City" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="20" />
+          <Property Name="Age" Type="date" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="City" Type="nvarchar" MaxLength="20" />
           <Property Name="Description" Type="nvarchar" MaxLength="200" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ImageBase64" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="ImageContentType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ImageBase64" Type="nvarchar(max)" />
+          <Property Name="ImageContentType" Type="nvarchar(max)" />
         </EntityType>
         <EntityContainer Name="WorldDBModelStoreContainer">
-          <EntitySet Name="User" EntityType="Self.User" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [User].[Id] AS [Id], 
-    [User].[FirstName] AS [FirstName], 
-    [User].[LastName] AS [LastName], 
-    [User].[Age] AS [Age], 
-    [User].[Sex] AS [Sex], 
-    [User].[City] AS [City], 
-    [User].[Description] AS [Description], 
-    [User].[Email] AS [Email], 
-    [User].[Password] AS [Password], 
-    [User].[ImageBase64] AS [ImageBase64], 
-    [User].[ImageContentType] AS [ImageContentType]
-    FROM [dbo].[User] AS [User]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -57,29 +32,20 @@ warning 6002: The table/view 'B6B5CE4E-1542-4E82-BED3-806F946F0DC3.dbo.User' doe
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="LastName" />
-            <PropertyRef Name="Age" />
-            <PropertyRef Name="Sex" />
-            <PropertyRef Name="City" />
-            <PropertyRef Name="Email" />
-            <PropertyRef Name="Password" />
-            <PropertyRef Name="ImageBase64" />
-            <PropertyRef Name="ImageContentType" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Age" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Sex" Type="Boolean" Nullable="false" />
-          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="DateTime" Precision="0" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ImageBase64" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ImageContentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImageBase64" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageContentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="WorldDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WorldDBEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="User" EntityType="Self.User" />
         </EntityContainer>
       </Schema>
@@ -87,7 +53,7 @@ warning 6002: The table/view 'B6B5CE4E-1542-4E82-BED3-806F946F0DC3.dbo.User' doe
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WorldDBModelStoreContainer" CdmEntityContainer="WorldDBEntities">
+        <EntityContainerMapping StorageEntityContainer="WorldDBModelStoreContainer" CdmEntityContainer="WorldDBEntities1">
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="WorldDBModel.User">
               <MappingFragment StoreEntitySet="User">
