@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MusicWave.Models
 {
-    public class CustomUser
+    public class CustomUser 
     {
         public Guid Id { get; set; }
 
@@ -18,7 +18,7 @@ namespace MusicWave.Models
 
         public DateTime Age { get; set; }
         
-        public bool Sex { get; set; }
+        public string Sex { get; set; }
 
         [MinLength(2)]
         [MaxLength(20)]

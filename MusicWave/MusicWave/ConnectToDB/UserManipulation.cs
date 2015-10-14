@@ -1,13 +1,21 @@
 ﻿using System;
 using System.Data.Entity.Validation;
-using System.Web.Mvc;
-using MusicWave.Helpers;
 using MusicWave.Models;
 
 namespace MusicWave.ConnectToDB
 {
     public class UserManipulation
     {
+        private bool CheckSex(string sex)
+        {
+            bool result = sex == "Male";
+            if (sex == "Female")
+            {
+                result = false;
+            }
+            return result;
+
+        }
         public void AddUserToDb(CustomUser model)
         {
             using (var db = new WorldDBEntities1())
@@ -22,7 +30,7 @@ namespace MusicWave.ConnectToDB
                     Description = model.Description,
                     Email = model.Email,
                     Password = model.Password,
-                    Sex = model.Sex,
+                    Sex = CheckSex(model.Sex),
                     ImageBase64 = model.ImageBase64,
                     ImageContentType = model.ImageContentType
                 };

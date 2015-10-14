@@ -1,4 +1,5 @@
-﻿@model MusicWave.Models.CustomUser
+﻿@using System.Web.UI.WebControls
+@model MusicWave.Models.CustomUser
 
 @{
     ViewBag.Title = "Registration";
@@ -62,13 +63,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-
-
-                    @*@Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
-                        </div>*@
                     <div class="col-md-2"></div>
                     <div class="col-md-10">
                         <div class='input-group date' id='datetimepicker10' style="width: 276px">
@@ -77,29 +71,20 @@
                                 <span class="glyphicon glyphicon-calendar">
                                 </span>
                             </span>
-                            <input type='text' class="form-control" placeholder="Birthday" />
-
-
+                            @Html.TextBoxFor(model => model.Age, new { @placeholder = "Birthday", @class = "form-control" })
                         </div>
-
                     </div>
                 </div>
 
-
                 <div class="form-group ">
-                    @*@Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Sex, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
-                        </div>*@
                     <div class="col-md-2"></div>
                     <div class="btn-group col-md-10" data-toggle="buttons">
-                        <label class="btn btn-default **active**">
-                            <input type="radio" name="inputWalls" id="inputWalls" value="Excellent" checked>
+                        <label class="btn btn-default">
+                            @Html.RadioButtonFor(model => model.Sex, "Male", new { @class = "btn btn-default **active**" })
                             Male
                         </label>
                         <label class="btn btn-default">
-                            <input type="radio" name="inputWalls" id="inputWalls" value="Good">
+                            @Html.RadioButtonFor(model => model.Sex, "Female", new { @class = "btn btn-default" })
                             Female
                         </label>
                     </div>
@@ -116,13 +101,13 @@
                     <div class="input-group col-md-10">
                         <span class="input-group-btn">
                             <span class="btn btn-primary btn-file">
-                                Browse&hellip; <input type="file" multiple>
+                                Browse&hellip;
+                                @Html.TextBoxFor(model => model.ImageContentType, new { @type = "file" })
                             </span>
                         </span>
-                        <input type="text" name="file" id="file" class="form-control" readonly style="width: 190px">
+                        @Html.TextBox("ImageContentType", "", new { @class = "form-control", style = "width: 190px", placeholder = "Avatar", type = "text", name = "file", id = "file", @readonly = "readonly" })
                     </div>
-                    @Html.ValidationMessageFor(model => model.ImageContentType, "", new { @class = "text-danger" })
-                </div>
+                </div>s
             </div>
 
             <div class="wizard-step confirm  hide-btn">
@@ -130,7 +115,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Description, new { cols = "20", rows = "60", htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @style = "width:400px; max-width: 500px; height:300" } })
                         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -145,7 +130,6 @@
             </div>
         </fieldset>
     </div>
-
 }
 
 <script type="text/javascript">
