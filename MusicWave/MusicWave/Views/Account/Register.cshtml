@@ -15,29 +15,29 @@
     <br />
     <div class="form-horizontal">
 
-        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <fieldset>
             <div class="wizard-step">
                 <h4>Step 1</h4>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Email, htmlAttributes: new {@class = "control-label col-md-2"})
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Email, new {htmlAttributes = new {@class = "form-control"}})
-                        @Html.ValidationMessageFor(model => model.Email, "", new {@class = "text-danger"})
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Password, htmlAttributes: new {@class = "control-label col-md-2"})
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Password, new {htmlAttributes = new {@class = "form-control"}})
-                        @Html.ValidationMessageFor(model => model.Password, "", new {@class = "text-danger"})
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new {@class = "control-label col-md-2"})
+                    @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.ConfirmPassword, new {htmlAttributes = new {@class = "form-control"}})
-                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new {@class = "text-danger"})
+                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -47,47 +47,47 @@
             <div class="wizard-step">
                 <h4>Step 2</h4>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new {@class = "control-label col-md-2"})
+                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.FirstName, new {htmlAttributes = new {@class = "form-control"}})
-                        @Html.ValidationMessageFor(model => model.FirstName, "", new {@class = "text-danger"})
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LastName, htmlAttributes: new {@class = "control-label col-md-2"})
+                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.LastName, new {htmlAttributes = new {@class = "form-control"}})
-                        @Html.ValidationMessageFor(model => model.LastName, "", new {@class = "text-danger"})
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Age, htmlAttributes: new {@class = "control-label col-md-2"})
+                    @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Age, new {htmlAttributes = new {@class = "form-control"}})
-                        @Html.ValidationMessageFor(model => model.Age, "", new {@class = "text-danger"})
+                        @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Sex, htmlAttributes: new {@class = "control-label col-md-2"})
+                    @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Sex, new {htmlAttributes = new {@class = "form-control"}})
-                        @Html.ValidationMessageFor(model => model.Sex, "", new {@class = "text-danger"})
+                        @Html.EditorFor(model => model.Sex, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.City, htmlAttributes: new {@class = "control-label col-md-2"})
+                    @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.City, new {htmlAttributes = new {@class = "form-control"}})
-                        @Html.ValidationMessageFor(model => model.City, "", new {@class = "text-danger"})
+                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="file" name="file" id="file"/>
-                    @Html.ValidationMessageFor(model => model.ImageContentType, "", new {@class = "text-danger"})
+                    <input type="file" name="file" id="file" />
+                    @Html.ValidationMessageFor(model => model.ImageContentType, "", new { @class = "text-danger" })
                 </div>
             </div>
 
-            <div class="wizard-step confirm  hide-btn">
+            <div class="wizard-step confirm">
                 <h4>Step 3</h4>
                 <div class="form-group">
                     @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -96,29 +96,20 @@
                         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" class="btn btn-default" />
-
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            @*<div class="wizard-step confirm"></div>*@
+            <div class="wizard-step confirm"></div>
 
             <div class="form-group">
                 <div class="col-md-10">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="button" id="back-step" name="back-step" value="< Back" class="btn btn-default navigation"/>
-                        <input type="button" id="next-step" name="next-step" value="Next >" class="btn btn-default navigation"/>
+                        <input type="button" id="back-step" name="back-step" value="< Back" class="btn btn-default navigation" />
+                        <input type="button" id="next-step" name="next-step" value="Next >" class="btn btn-default navigation" />
                     </div>
                 </div>
             </div>
         </fieldset>
     </div>
-    
 }
 
 <script type="text/javascript">
@@ -149,7 +140,7 @@
 
             var validator = $("form").validate();
             var anyError = false;
-            $step.find(".navigation").each(function () {
+            $step.find("input").each(function () {
                 if (!validator.element(this)) {
                     anyError = true;
                 }
@@ -158,17 +149,16 @@
                 return false;
 
 
-            
-            //if ($step.next().hasClass("confirm")) {
-            //    $.post("/Account/SignIn", $("form").serialize(), function (r) {
-            //        $(".wizard-step.confirm".html(r));
-            //    });
-            //}
+            if ($step.next().hasClass("confirm")) {
+                $.post("/Account/SignIn", $("form").serialize(), function (r) {
+                    $(".wizard-step.confirm".html(r));
+                });
+            }
             if ($step.next().hasClass("wizard-step")) { // is there any next step?
                 $step.hide().next().fadeIn(); // show it and hide current step
                 $("#back-step").show(); // recall to show backStep button
-            //} else { // this is last step, submit form
-            //    $("form").submit();
+            } else { // this is last step, submit form
+                $("form").submit();
                 //    $('#regForm')
                 //.submit(function (e) {
                 //    $.post({

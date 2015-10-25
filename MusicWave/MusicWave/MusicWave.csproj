@@ -52,6 +52,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SimpleCrypto, Version=26.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleCrypto.0.3.30.26\lib\SimpleCrypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -255,8 +259,11 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js.map" />
+    <Content Include="Views\Account\LogIn.cshtml" />
+    <Content Include="Views\Account\LogOut.cshtml" />
     <None Include="Views\Account\Register.cshtml" />
-    <None Include="Views\Account\SignIn.cshtml" />
+    <None Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\sdf.cshtml" />
     <None Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup />

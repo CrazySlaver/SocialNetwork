@@ -32,14 +32,14 @@ namespace MusicWave.Models
         [Required(ErrorMessage = "Email should not be empty")]
         [RegularExpression(@"^\S+@\S+$", ErrorMessage = "Wrong email format. Try new one")]
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email")]
+        [Display(Name = "Email adress:")]
         public string Email { get; set; }
         
         [Required]
         [DataType(DataType.Password)]
         [MinLength(5)]
         [MaxLength(100)]
-        [Display(Name = "Password")]
+        [Display(Name = "Password: ")]
         public string Password { get; set; }
 
         [Required]

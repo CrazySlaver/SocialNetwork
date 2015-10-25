@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using MusicWave.ConnectToDB;
 using MusicWave.Helpers;
@@ -20,19 +21,46 @@ namespace MusicWave.Controllers
         public ActionResult Register(HttpPostedFileBase file, [ModelBinder(typeof(UserModelBinder))] CustomUser model)
         {
             _user.AddUserToDb(model);
-            return View("SignIn", model);
-            //if (ModelState.IsValid)
-            //{
-               
-            //}
-            //return View("Register", model);
+            return View("Index", model);
         }
+        
+        [HttpGet]
+        public ActionResult LogIn()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public ActionResult SignIn(HttpPostedFileBase file, [ModelBinder(typeof (UserModelBinder))] CustomUser model)
+        public ActionResult LogIn(CustomUser model)
         {
             _user.AddUserToDb(model);
             return View();
         }
-        
+
+        public ActionResult LogOut()
+        {
+            return View();
+        }
+
+        private bool IsValid(string email, string password)
+        {
+            var crypto = new SimpleCrypto.PBKDF2();
+            
+            bool isValid = false;
+
+            using (var db = new WorldDBEntities1())
+            {
+                var user = db.User.FirstOrDefault(u => u.Email == email);
+                if (user != null)
+                {
+                    if (user.Password == crypto.Compute(password, user.Password))
+                    {
+                        isValid = true;
+                    }
+                }
+            }
+
+            return isValid;
+        }
     }
 }

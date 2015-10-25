@@ -1,15 +1,14 @@
 ﻿@if (Request.IsAuthenticated)
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            <p>Welcome!</p>
-        </li>
+        <li><strong>@Html.Encode(User.Identity.Name)</strong></li>
+        @Html.ActionLink("Log Out","LogOut","Account")
     </ul>
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink("Register", "Register", "Account", null, new {id = "registerLink"})</li>
-        @*<li>@Html.ActionLink("Log in", "Login", "Account", null, new { id = "loginLink" })</li>*@
+        <li>@Html.ActionLink("Log in", "LogIn", "Account", null, new { id = "loginLink" })</li>
     </ul>
 }
