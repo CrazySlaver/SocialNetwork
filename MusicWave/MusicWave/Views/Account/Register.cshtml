@@ -1,15 +1,17 @@
-﻿@model MusicWave.Models.CustomUser
+﻿@using System.Web.UI.WebControls
+@model MusicWave.Models.CustomUser
 
 @{
     ViewBag.Title = "Registration";
 }
+
+<script type="text/javascript" src="/scripts/moment.min.js"></script>
+<script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="/scripts/bootstrap-datetimepicker.js"></script>
+<link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
 <h2>Registration</h2>
 
-<div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 10%;"></div>
-</div>
-
-@using (Html.BeginForm("SignIn", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @id = "regForm" }))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @id = "regForm" }))
 {
     @Html.AntiForgeryToken()
     <br />
@@ -20,12 +22,14 @@
             <div class="wizard-step">
                 <h4>Step 1</h4>
                 <div class="form-group">
+
                     @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
@@ -40,8 +44,6 @@
                         @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
-
             </div>
 
             <div class="wizard-step">
@@ -61,17 +63,30 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-2"></div>
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                        <div class='input-group date' id='datetimepicker10' style="width: 276px">
+
+                            <span class=" input-group-addon">
+                                <span class="glyphicon glyphicon-calendar">
+                                </span>
+                            </span>
+                            @Html.TextBoxFor(model => model.Age, new { @placeholder = "Birthday", @class = "form-control" })
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Sex, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
+
+                <div class="form-group ">
+                    <div class="col-md-2"></div>
+                    <div class="btn-group col-md-10" data-toggle="buttons">
+                        <label class="btn btn-default">
+                            @Html.RadioButtonFor(model => model.Sex, "Male", new { @class = "btn btn-default **active**" })
+                            Male
+                        </label>
+                        <label class="btn btn-default">
+                            @Html.RadioButtonFor(model => model.Sex, "Female", new { @class = "btn btn-default" })
+                            Female
+                        </label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -82,30 +97,35 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="file" name="file" id="file" />
-                    @Html.ValidationMessageFor(model => model.ImageContentType, "", new { @class = "text-danger" })
-                </div>
+                    <div class="col-md-2"></div>
+                    <div class="input-group col-md-10">
+                        <span class="input-group-btn">
+                            <span class="btn btn-primary btn-file">
+                                Browse&hellip;
+                                @Html.TextBoxFor(model => model.ImageContentType, new { @type = "file" })
+                            </span>
+                        </span>
+                        @Html.TextBox("ImageContentType", "", new { @class = "form-control", style = "width: 190px", placeholder = "Avatar", type = "text", name = "file", id = "file", @readonly = "readonly" })
+                    </div>
+                </div>s
             </div>
 
-            <div class="wizard-step confirm">
+            <div class="wizard-step confirm  hide-btn">
                 <h4>Step 3</h4>
                 <div class="form-group">
                     @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @style = "width:400px; max-width: 500px; height:300" } })
                         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
 
-            <div class="wizard-step confirm"></div>
-
             <div class="form-group">
                 <div class="col-md-10">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="button" id="back-step" name="back-step" value="< Back" class="btn btn-default navigation" />
-                        <input type="button" id="next-step" name="next-step" value="Next >" class="btn btn-default navigation" />
-                    </div>
+                    <input type="button" id="back-step" name="back-step" value="< Back" class="btn btn-default nav-back" />
+                    <input type="button" id="next-step" name="next-step" value="Next >" class="btn btn-default nav-next" />
+                    <input type="submit" value="Done" class="btn btn-default btn-submit" />
                 </div>
             </div>
         </fieldset>
@@ -113,15 +133,44 @@
 }
 
 <script type="text/javascript">
+    $(document).on('change', '.btn-file :file', function () {
+        var input = $(this),
+            numFiles = input.get(0).files ? input.get(0).files.length : 1,
+            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        input.trigger('fileselect', [numFiles, label]);
+    });
+
+    $(document).ready(function () {
+        $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
+
+            var input = $(this).parents('.input-group').find(':text'),
+                log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+            if (input.length) {
+                input.val(log);
+            } else {
+                if (log) alert(log);
+            }
+
+        });
+    });
+    $(function () {
+
+        $('#datetimepicker10').datetimepicker({
+            viewMode: 'years',
+            format: 'DD/MM/YYYY'
+        });
+    });
     $(function () {
 
         $(".wizard-step:first").fadeIn(); // show first step
-
+        $(".btn-submit").hide();
 
         // attach backStep button handler
         // hide on first step
         $("#back-step").hide().click(function () {
             var $step = $(".wizard-step:visible"); // get current step
+
             if ($step.prev().hasClass("wizard-step")) { // is there any previous step?
                 $step.hide().prev().fadeIn(); // show it and hide current step
 
@@ -130,8 +179,11 @@
                     $("#back-step").hide();
                 }
             }
+            $(".nav-next").first().show(function next() {
+                $(this).next(".nav-next").show(next);
+            });
+            $(".btn-submit").hide();
         });
-
 
         // attach nextStep button handler
         $("#next-step").click(function () {
@@ -140,41 +192,32 @@
 
             var validator = $("form").validate();
             var anyError = false;
-            $step.find("input").each(function () {
+            $step.find(".navigation").each(function () {
                 if (!validator.element(this)) {
                     anyError = true;
                 }
             });
+
             if (anyError)
                 return false;
 
-
-            if ($step.next().hasClass("confirm")) {
-                $.post("/Account/SignIn", $("form").serialize(), function (r) {
-                    $(".wizard-step.confirm".html(r));
-                });
-            }
             if ($step.next().hasClass("wizard-step")) { // is there any next step?
                 $step.hide().next().fadeIn(); // show it and hide current step
                 $("#back-step").show(); // recall to show backStep button
-            } else { // this is last step, submit form
-                $("form").submit();
-                //    $('#regForm')
-                //.submit(function (e) {
-                //    $.post({
-                //        url: "/Account/SignIn",
-                //        type: 'POST',
-                //        data: new FormData(this),
-                //        processData: false,
-                //        contentType: false
-                //    }).done(function (result) {
-                //        $('#container').html(result);
-                //    });
-                //    e.preventDefault();
-                //});;
             }
         });
 
+        $("#next-step").click(function () {
+            var $step = $(".wizard-step:visible");
+
+            if ($step.hasClass("confirm")) {
+                $(".nav-next").first().hide(function next() {
+                    $(this).next(".nav-next").hide(next);
+                });
+                $(".btn-submit").show();
+            }
+
+        });
     });
 
 
@@ -184,8 +227,31 @@
     .wizard-step {
         display: none;
     }
-</style>
 
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+        margin-left: 14px;
+    }
+
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            background: red;
+            cursor: inherit;
+            display: block;
+        }
+
+    input[readonly] {
+        background-color: white !important;
+        cursor: text !important;
+    }
+</style>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

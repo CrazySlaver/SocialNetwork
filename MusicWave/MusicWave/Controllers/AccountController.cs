@@ -1,15 +1,22 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using MusicWave.ConnectToDB;
 using MusicWave.Helpers;
 using MusicWave.Models;
 
 namespace MusicWave.Controllers
 {
+
     public class AccountController : Controller
     {
         private readonly UserManipulation _user = new UserManipulation();
+
+        public ActionResult Index()
+        {
+            return View();
+        }
 
         [HttpGet]
         public ActionResult Register()
@@ -20,10 +27,19 @@ namespace MusicWave.Controllers
         [HttpPost]
         public ActionResult Register(HttpPostedFileBase file, [ModelBinder(typeof(UserModelBinder))] CustomUser model)
         {
-            _user.AddUserToDb(model);
-            return View("Index", model);
+            if (ModelState.IsValid)
+            {
+                _user.AddUserToDb(model);
+                return RedirectToAction("Index","Home");
+            }
+            else
+            {
+                ModelState.AddModelError("","Login data is incorrect.");
+            }
+            return View(model);
+            
         }
-        
+
         [HttpGet]
         public ActionResult LogIn()
         {
@@ -31,21 +47,37 @@ namespace MusicWave.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogIn(CustomUser model)
+        public ActionResult LogIn(LogInUser model)
         {
-            _user.AddUserToDb(model);
-            return View();
+            if (ModelState.IsValid)
+            {
+                if (IsValid(model.Email, model.Password))
+                {
+                    FormsAuthentication.SetAuthCookie(model.Email,false);
+                   
+                    //bool res = Request.IsAuthenticated;
+
+                    return RedirectToAction("Index","Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("","Login data is incorrect.");
+                }
+
+            }
+            return View(model);
         }
 
         public ActionResult LogOut()
         {
-            return View();
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
 
         private bool IsValid(string email, string password)
         {
             var crypto = new SimpleCrypto.PBKDF2();
-            
+
             bool isValid = false;
 
             using (var db = new WorldDBEntities1())
@@ -53,10 +85,14 @@ namespace MusicWave.Controllers
                 var user = db.User.FirstOrDefault(u => u.Email == email);
                 if (user != null)
                 {
-                    if (user.Password == crypto.Compute(password, user.Password))
+                    if (user.Password == password)
                     {
                         isValid = true;
                     }
+                    //if (user.Password == crypto.Compute(password, user.Password))
+                    //{
+                    //    isValid = true;
+                    //}
                 }
             }
 

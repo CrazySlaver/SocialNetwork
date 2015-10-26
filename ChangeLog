@@ -1,0 +1,47 @@
+commit 4b202fe1a7658182a19227aacf407b76e3b7fe45
+Author: CrazySlaver <valera.pogor@gmail.com>
+Date:   Mon Oct 26 00:37:09 2015 +0200
+
+    sdfsdf
+
+commit 5230a0c595dd1f82bb974206c5175f611f3fdda9
+Author: CrazySlaver <valera.pogor@gmail.com>
+Date:   Thu Oct 8 03:46:50 2015 +0300
+
+    Registration
+    
+    Add user to DB without validation.
+
+commit 7cc8a49827b6e4c74513e715151113536736ab12
+Author: CrazySlaver <valera.pogor@gmail.com>
+Date:   Wed Oct 7 03:02:55 2015 +0300
+
+    Validation on register form
+
+commit fe7e3959c0e95610c2fdc33d38268e1e4f4bc5f6
+Author: CrazySlaver <valera.pogor@gmail.com>
+Date:   Tue Oct 6 02:21:51 2015 +0300
+
+    Registration form
+
+commit 7eeb7c259ab928032ef63a504e5a980862c14f0e
+Author: CrazySlaver <valera.pogor@gmail.com>
+Date:   Mon Oct 5 02:52:26 2015 +0300
+
+    Registration
+    
+    Create model and action for registration user.
+
+commit f05fef9aa6c27b83439132a43e40ab09d63fefa6
+Author: CrazySlaver <valera.pogor@gmail.com>
+Date:   Sun Oct 4 02:20:24 2015 +0300
+
+    First commit.
+    
+    Create MVC project and database.
+
+commit 2516c35126225327b6e5ee649484884eedf7058f
+Author: CrazySlaver <valera.pogor@gmail.com>
+Date:   Thu Oct 1 19:29:33 2015 +0300
+
+    Initial commit
