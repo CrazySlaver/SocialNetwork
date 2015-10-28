@@ -1,5 +1,71 @@
-﻿@{
+﻿@model MusicWave.Models.LogInUser
+@{
     ViewBag.Title = "Home Page";
 }
+<link href="~/Content/landing-page.css" rel="stylesheet">
+<link href="~/Content/indexForm.css" rel="stylesheet">
+<link href="~/Content/slider.css" rel="stylesheet">
+<script type="text/javascript" src="~/Scripts/jssor.slider.mini.js"></script>
+<script type="text/javascript" src="~/Scripts/slider.js"></script>
 
-<h2>Тут може бути ваша реклама.</h2>
+<div class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <h1>Welcome!</h1>
+                <p>
+                    We are glad to see you in our site. It's amazing collection of songs videos and facts about singers.
+                    Music is a wave. Music is a live. Music it's awesome.
+                </p>
+                @using (Html.BeginForm("LogIn", "Account", FormMethod.Post))
+                {
+                    <br />
+                    <fieldset>
+                        <div class="form-inline">
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-inline">
+                            <div class="form-group ">
+                                <input type="submit" value="Log In" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </fieldset>
+                    @Html.ValidationSummary(true, "CustomError", new { @class = "text-danger" })
+                }
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden; visibility: hidden;">
+                    <!-- Loading Screen -->
+                    <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+                        <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+                        <div style="position:absolute;display:block;top:0px;left:0px;width:100%;height:100%;"></div>
+                    </div>
+                    <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden;">
+                        <div data-p="112.50" style="display: none;">
+                            <img data-u="image" src="~/Content/img/02.jpg" />
+                        </div>
+                        <div data-p="112.50" style="display: none;">
+                            <img data-u="image" src="~/Content/img/04.jpg" />
+                        </div>
+                        <div data-p="112.50" style="display: none;">
+                            <img data-u="image" src="~/Content/img/05.jpg" />
+                        </div>
+                        <div data-p="112.50" style="display: none;">
+                            <img data-u="image" src="~/Content/img/09.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

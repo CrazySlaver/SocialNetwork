@@ -163,6 +163,8 @@
     <Content Include="App_Data\WorldDB_log.ldf">
       <DependentUpon>WorldDB.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\background1.jpg" />
+    <Content Include="Content\background2.jpg" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -170,7 +172,15 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\footer.css" />
+    <Content Include="Content\img\02.jpg" />
+    <Content Include="Content\img\04.jpg" />
+    <Content Include="Content\img\05.jpg" />
+    <Content Include="Content\img\09.png" />
+    <Content Include="Content\indexForm.css" />
     <Content Include="Content\jquery.validate.bootstrap.css" />
+    <Content Include="Content\landing-page.css" />
+    <Content Include="Content\slider.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -323,6 +333,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jssor.slider.debug.js" />
+    <Content Include="Scripts\jssor.slider.min.js" />
+    <Content Include="Scripts\jssor.slider.mini.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
@@ -330,6 +343,7 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\slider.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -346,7 +360,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js.map" />
-    <Content Include="Views\Account\LogIn.cshtml" />
     <Content Include="Views\Account\LogOut.cshtml" />
     <None Include="Views\Account\Register.cshtml" />
     <None Include="Views\Account\Index.cshtml" />

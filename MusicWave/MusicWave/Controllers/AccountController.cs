@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -40,12 +41,6 @@ namespace MusicWave.Controllers
             
         }
 
-        [HttpGet]
-        public ActionResult LogIn()
-        {
-            return View();
-        }
-
         [HttpPost]
         public ActionResult LogIn(LogInUser model)
         {
@@ -61,11 +56,11 @@ namespace MusicWave.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("","Login data is incorrect.");
+                    ModelState.AddModelError("CustomError", "Login data is incorrect.");
                 }
 
             }
-            return View(model);
+            return RedirectToAction("Index","Home",model);
         }
 
         public ActionResult LogOut()
@@ -82,18 +77,28 @@ namespace MusicWave.Controllers
 
             using (var db = new WorldDBEntities1())
             {
-                var user = db.User.FirstOrDefault(u => u.Email == email);
-                if (user != null)
+                try
                 {
-                    if (user.Password == password)
+                    var user = db.User.FirstOrDefault(u => u.Email == email);
+                    if (user != null)
                     {
-                        isValid = true;
+                        if (user.Password == password)
+                        {
+                            isValid = true;
+                        }
+                        //if (user.Password == crypto.Compute(password, user.Password))
+                        //{
+                        //    isValid = true;
+                        //}
                     }
-                    //if (user.Password == crypto.Compute(password, user.Password))
-                    //{
-                    //    isValid = true;
-                    //}
                 }
+                catch (Exception)
+                {
+                    
+                    throw;
+                }
+                
+                
             }
 
             return isValid;
