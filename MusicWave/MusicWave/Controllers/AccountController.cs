@@ -52,7 +52,7 @@ namespace MusicWave.Controllers
                    
                     //bool res = Request.IsAuthenticated;
 
-                    return RedirectToAction("Index","Home");
+                    return RedirectToAction("Index","User");
                 }
                 else
                 {
