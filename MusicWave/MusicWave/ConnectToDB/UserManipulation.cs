@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity.Validation;
+using System.Web.Helpers;
 using MusicWave.Models;
 
 namespace MusicWave.ConnectToDB
@@ -16,6 +17,7 @@ namespace MusicWave.ConnectToDB
             return result;
 
         }
+
         public void AddUserToDb(CustomUser model)
         {
             using (var db = new WorldDBEntities1())
@@ -29,7 +31,7 @@ namespace MusicWave.ConnectToDB
                     City = model.City,
                     Description = model.Description,
                     Email = model.Email,
-                    Password = model.Password,
+                    Password = Crypto.HashPassword(model.Password),
                     Sex = CheckSex(model.Sex),
                     ImageBase64 = model.ImageBase64,
                     ImageContentType = model.ImageContentType

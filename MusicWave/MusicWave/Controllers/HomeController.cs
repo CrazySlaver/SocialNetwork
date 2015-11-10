@@ -15,15 +15,13 @@ namespace MusicWave.Controllers
         
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "This is the test project created on ASP.NET MVC framework. For those people who want to take me a job :)";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

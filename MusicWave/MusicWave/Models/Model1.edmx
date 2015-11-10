@@ -17,9 +17,11 @@
           <Property Name="City" Type="nvarchar" MaxLength="20" />
           <Property Name="Description" Type="nvarchar" MaxLength="200" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ImageBase64" Type="nvarchar(max)" />
           <Property Name="ImageContentType" Type="nvarchar(max)" />
+          <Property Name="Cookies" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityContainer Name="WorldDBModelStoreContainer">
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -41,9 +43,11 @@
           <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ImageBase64" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ImageContentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cookies" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoleName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="WorldDBEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="User" EntityType="Self.User" />
@@ -68,6 +72,8 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="ImageBase64" ColumnName="ImageBase64" />
                 <ScalarProperty Name="ImageContentType" ColumnName="ImageContentType" />
+                <ScalarProperty Name="Cookies" ColumnName="Cookies" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

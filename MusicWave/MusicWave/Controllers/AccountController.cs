@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Security;
 using MusicWave.ConnectToDB;
@@ -31,14 +32,14 @@ namespace MusicWave.Controllers
             if (ModelState.IsValid)
             {
                 _user.AddUserToDb(model);
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
-                ModelState.AddModelError("","Login data is incorrect.");
+                ModelState.AddModelError("", "Login data is incorrect.");
             }
             return View(model);
-            
+
         }
 
         [HttpPost]
@@ -48,11 +49,8 @@ namespace MusicWave.Controllers
             {
                 if (IsValid(model.Email, model.Password))
                 {
-                    FormsAuthentication.SetAuthCookie(model.Email,false);
-                   
-                    //bool res = Request.IsAuthenticated;
-
-                    return RedirectToAction("Index","User");
+                    FormsAuthentication.SetAuthCookie(model.Email, false);
+                    return RedirectToAction("Index", "User");
                 }
                 else
                 {
@@ -60,7 +58,7 @@ namespace MusicWave.Controllers
                 }
 
             }
-            return RedirectToAction("Index","Home",model);
+            return RedirectToAction("Index", "Home", model);
         }
 
         public ActionResult LogOut()
@@ -71,8 +69,6 @@ namespace MusicWave.Controllers
 
         private bool IsValid(string email, string password)
         {
-            var crypto = new SimpleCrypto.PBKDF2();
-
             bool isValid = false;
 
             using (var db = new WorldDBEntities1())
@@ -82,25 +78,19 @@ namespace MusicWave.Controllers
                     var user = db.User.FirstOrDefault(u => u.Email == email);
                     if (user != null)
                     {
-                        if (user.Password == password)
+
+                        if (Crypto.VerifyHashedPassword(user.Password, password))
                         {
                             isValid = true;
                         }
-                        //if (user.Password == crypto.Compute(password, user.Password))
-                        //{
-                        //    isValid = true;
-                        //}
                     }
                 }
                 catch (Exception)
                 {
-                    
+
                     throw;
                 }
-                
-                
             }
-
             return isValid;
         }
     }

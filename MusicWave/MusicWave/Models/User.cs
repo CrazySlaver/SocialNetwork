@@ -25,5 +25,7 @@ namespace MusicWave.Models
         public string Password { get; set; }
         public string ImageBase64 { get; set; }
         public string ImageContentType { get; set; }
+        public string Cookies { get; set; }
+        public string RoleName { get; set; }
     }
 }
