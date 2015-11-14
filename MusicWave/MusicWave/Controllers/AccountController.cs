@@ -14,6 +14,7 @@ namespace MusicWave.Controllers
     public class AccountController : Controller
     {
         private readonly UserManipulation _user = new UserManipulation();
+        private CustomUser _customUser = new CustomUser();
 
         public ActionResult Index()
         {
@@ -47,10 +48,13 @@ namespace MusicWave.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (IsValid(model.Email, model.Password))
+                var user = IsValid(model.Email, model.Password);
+                if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(model.Email, false);
+                    TempData["user"] = user;
                     return RedirectToAction("Index", "User");
+                    
                 }
                 else
                 {
@@ -67,31 +71,31 @@ namespace MusicWave.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        private bool IsValid(string email, string password)
-        {
-            bool isValid = false;
+       
 
-            using (var db = new WorldDBEntities1())
+        private User IsValid(string email, string password)
+        {
+            User user = null;
+            using (var db = new WorldDBEntities2())
             {
                 try
                 {
-                    var user = db.User.FirstOrDefault(u => u.Email == email);
+                    user = db.User.FirstOrDefault(u => u.Email == email);
                     if (user != null)
                     {
-
-                        if (Crypto.VerifyHashedPassword(user.Password, password))
+                        var tempPassword = Crypto.SHA256(password);
+                        if (user.Password == tempPassword)
                         {
-                            isValid = true;
+                            return user;
                         }
                     }
                 }
                 catch (Exception)
                 {
-
                     throw;
                 }
             }
-            return isValid;
+            return user;
         }
     }
 }

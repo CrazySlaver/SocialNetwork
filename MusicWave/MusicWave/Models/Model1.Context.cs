@@ -13,10 +13,10 @@ namespace MusicWave.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WorldDBEntities1 : DbContext
+    public partial class WorldDBEntities2 : DbContext
     {
-        public WorldDBEntities1()
-            : base("name=WorldDBEntities1")
+        public WorldDBEntities2()
+            : base("name=WorldDBEntities2")
         {
         }
     
@@ -25,6 +25,9 @@ namespace MusicWave.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Conversation> Conversation { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
 }

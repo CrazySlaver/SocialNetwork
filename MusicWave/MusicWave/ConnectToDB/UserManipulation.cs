@@ -20,7 +20,7 @@ namespace MusicWave.ConnectToDB
 
         public void AddUserToDb(CustomUser model)
         {
-            using (var db = new WorldDBEntities1())
+            using (var db = new WorldDBEntities2())
             {
                 var entity = new User()
                 {
@@ -31,7 +31,7 @@ namespace MusicWave.ConnectToDB
                     City = model.City,
                     Description = model.Description,
                     Email = model.Email,
-                    Password = Crypto.HashPassword(model.Password),
+                    Password = Crypto.SHA256(model.Password),
                     Sex = CheckSex(model.Sex),
                     ImageBase64 = model.ImageBase64,
                     ImageContentType = model.ImageContentType

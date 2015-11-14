@@ -13,6 +13,7 @@ namespace MusicWave.Controllers
             return View();
         }
         
+        [Authorize(Roles = "user")]
         public ActionResult About()
         {
             ViewBag.Message = "This is the test project created on ASP.NET MVC framework. For those people who want to take me a job :)";

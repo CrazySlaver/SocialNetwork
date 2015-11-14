@@ -26,6 +26,8 @@ namespace MusicWave.Models
         public string ImageBase64 { get; set; }
         public string ImageContentType { get; set; }
         public string Cookies { get; set; }
-        public string RoleName { get; set; }
+        public Nullable<System.Guid> RoleId { get; set; }
+    
+        public virtual Roles Roles { get; set; }
     }
 }
