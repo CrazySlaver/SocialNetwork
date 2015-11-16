@@ -18,6 +18,8 @@ namespace MusicWave.Models
         [Display(Name = "Last name")]
         public string LastName { get; set; }
 
+        [DataType(DataType.Date)]
+        [Display(Name = "Birthday")]
         public DateTime Age { get; set; }
         
         public string Sex { get; set; }
@@ -33,7 +35,7 @@ namespace MusicWave.Models
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Email should not be empty")]
-        [RegularExpression(@"^\S+@\S+$", ErrorMessage = "Wrong email format. Try new one")]
+        [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Wrong email format. Try new one")]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email adress:")]
         public string Email { get; set; }

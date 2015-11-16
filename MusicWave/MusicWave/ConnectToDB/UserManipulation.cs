@@ -5,6 +5,8 @@ using MusicWave.Models;
 
 namespace MusicWave.ConnectToDB
 {
+    //TODO Добавлять роль зарегестрированому пользователю
+
     public class UserManipulation
     {
         private bool CheckSex(string sex)
