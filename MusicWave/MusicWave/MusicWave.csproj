@@ -413,7 +413,7 @@
     <None Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Error\NotAllow.cshtml" />
     <Content Include="Views\Error\ServerError.cshtml" />
-    <Content Include="Views\Chat\Conversation.cshtml" />
+    <Content Include="Views\Chat\Index.cshtml" />
     <None Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>

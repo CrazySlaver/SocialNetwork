@@ -10,17 +10,17 @@
 <script type="text/javascript" src="/scripts/moment.min.js"></script>
 <script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="/scripts/bootstrap-datetimepicker.js"></script>
-<link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css"/>
+<link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
 <script type="text/javascript">
-    $(document).on('change', '.btn-file :file', function () {
+    $(document).on('change', '.btn-file :file', function() {
         var input = $(this),
             numFiles = input.get(0).files ? input.get(0).files.length : 1,
             label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
         input.trigger('fileselect', [numFiles, label]);
     });
 
-    $(document).ready(function () {
-        $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
+    $(document).ready(function() {
+        $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
 
             var input = $(this).parents('.input-group').find(':text'),
                 log = numFiles > 1 ? numFiles + ' files selected' : label;
@@ -34,24 +34,24 @@
         });
     });
 
-    $(function () {
+    $(function() {
         var dateNow = new Date();
         $('#datetimepicker10').datetimepicker({
             viewMode: 'years',
             format: 'DD/MM/YYYY',
             maxDate: new Date(),
-            defaultDate:dateNow
+            defaultDate: dateNow
 
         });
     });
-    $(function () {
+    $(function() {
 
         $(".wizard-step:first").fadeIn(); // show first step
         $(".btn-submit").hide();
 
         // attach backStep button handler
         // hide on first step
-        $("#back-step").hide().click(function () {
+        $("#back-step").hide().click(function() {
             var $step = $(".wizard-step:visible"); // get current step
 
             if ($step.prev().hasClass("wizard-step")) { // is there any previous step?
@@ -69,13 +69,13 @@
         });
 
         // attach nextStep button handler
-        $("#next-step").click(function () {
+        $("#next-step").click(function() {
 
             var $step = $(".wizard-step:visible"); // get current step
 
             var validator = $("form").validate();
             var anyError = false;
-            $step.find(".navigation").each(function () {
+            $step.find(".navigation").each(function() {
                 if (!validator.element(this)) {
                     anyError = true;
                 }
@@ -90,7 +90,7 @@
             }
         });
 
-        $("#next-step").click(function () {
+        $("#next-step").click(function() {
             var $step = $(".wizard-step:visible");
 
             if ($step.hasClass("confirm")) {
@@ -105,7 +105,10 @@
 
 
 </script>
-<h2>Registration</h2>
+
+    <h2>Registration</h2>
+
+    
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @id = "regForm" }))
 {
@@ -118,11 +121,12 @@
             <div class="wizard-step">
                 <h4>Step 1</h4>
                 <div class="form-group">
-
-                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                  
+                    
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new {@class = "control-label col-md-2"})
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.Email, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Email, "", new {@class = "text-danger"})
                     </div>
                 </div>
 
@@ -152,13 +156,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LastName, htmlAttributes: new {@class = "control-label col-md-2"})
+                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.LastName, new {htmlAttributes = new {@class = "form-control"}})
-                        @Html.ValidationMessageFor(model => model.LastName, "", new {@class = "text-danger"})
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
@@ -168,7 +172,7 @@
                                 <span class="glyphicon glyphicon-calendar">
                                 </span>
                             </span>
-                            @Html.TextBoxFor(model => model.Age, new {@class = "form-control"})
+                            @Html.TextBoxFor(model => model.Age, new { @class = "form-control" })
                         </div>
                     </div>
                 </div>
@@ -186,12 +190,12 @@
                         </label>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
-                    @Html.LabelFor(model => model.City, htmlAttributes: new {@class = "control-label col-md-2"})
+                    @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.City, new {htmlAttributes = new {@class = "form-control"}})
-                        @Html.ValidationMessageFor(model => model.City, "", new {@class = "text-danger"})
+                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -222,9 +226,9 @@
 
             <div class="form-group">
                 <div class="col-md-10">
-                    <input type="button" id="back-step" name="back-step" value="< Back" class="btn btn-default nav-back" />
-                    <input type="button" id="next-step" name="next-step" value="Next >" class="btn btn-default nav-next" />
-                    <input type="submit" value="Done" class="btn btn-default btn-submit" />
+                    <input type="button" id="back-step" name="back-step" value="< Back" class="btn btn-default nav-back"/>
+                    <input type="button" id="next-step" name="next-step" value="Next >" class="btn btn-default nav-next"/>
+                    <input type="submit" value="Done" class="btn btn-default btn-submit"/>
                 </div>
             </div>
         </fieldset>

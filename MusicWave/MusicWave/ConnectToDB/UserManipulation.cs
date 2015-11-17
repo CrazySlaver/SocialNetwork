@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Data.Entity.Validation;
+using System.Linq;
 using System.Web.Helpers;
 using MusicWave.Models;
 
 namespace MusicWave.ConnectToDB
 {
-    //TODO Добавлять роль зарегестрированому пользователю
-
     public class UserManipulation
     {
         private bool CheckSex(string sex)
@@ -18,6 +17,27 @@ namespace MusicWave.ConnectToDB
             }
             return result;
 
+        }
+
+        private Guid GetRole(string role)
+        {
+            var roleId = new Guid();
+            using (var db = new WorldDBEntities2())
+            {
+                try
+                {
+                    var user = db.Roles.FirstOrDefault(u => u.Name == role);
+                    if (user != null)
+                    {
+                        roleId = user.RoleId;
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+            return roleId;
         }
 
         public void AddUserToDb(CustomUser model)
@@ -36,7 +56,8 @@ namespace MusicWave.ConnectToDB
                     Password = Crypto.SHA256(model.Password),
                     Sex = CheckSex(model.Sex),
                     ImageBase64 = model.ImageBase64,
-                    ImageContentType = model.ImageContentType
+                    ImageContentType = model.ImageContentType,
+                    RoleId = GetRole("user")
                 };
                 try
                 {
