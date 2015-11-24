@@ -139,6 +139,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="T4MVCExtensions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\T4MVCExtensions.3.16.4\lib\net40\T4MVCExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -154,20 +158,45 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.AccountController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Account.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdminProfile.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="ConnectToDB\UserManipulation.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ChatController.cs" />
+    <Compile Include="Areas\Account\AccessToDB\UserManipulation.cs" />
+    <Compile Include="Areas\Account\AccountAreaRegistration.cs" />
+    <Compile Include="Areas\AdminProfile\AdminProfileAreaRegistration.cs" />
+    <Compile Include="Areas\Chat\ChatAreaRegistration.cs" />
+    <Compile Include="Areas\UserProfile\UserProfileAreaRegistration.cs" />
+    <Compile Include="Chat.ChatController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Chat.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Account\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Chat\Controllers\ChatController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Areas\UserProfile\Controllers\UserController.cs" />
+    <Compile Include="ErrorController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\UserModelBinder.cs" />
-    <Compile Include="Hubs\SignalRChatHub.cs" />
+    <Compile Include="Areas\Account\Helpers\UserModelBinder.cs" />
+    <Compile Include="HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Chat\Hubs\SignalRChatHub.cs" />
     <Compile Include="Models\Conversation.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -200,7 +229,21 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\MusicWaveRoleProviders.cs" />
+    <Compile Include="SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="T4MVC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.UserController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\WorldDB.mdf" />
@@ -362,6 +405,10 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Areas\Account\Views\web.config" />
+    <Content Include="Areas\UserProfile\Views\web.config" />
+    <Content Include="Areas\Chat\Views\web.config" />
+    <Content Include="Areas\AdminProfile\Views\web.config" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -393,6 +440,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\slider.js" />
     <Content Include="Scripts\_references.js" />
+    <None Include="T4MVC.tt.settings.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -408,17 +456,19 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js.map" />
-    <Content Include="Views\Account\LogOut.cshtml" />
-    <None Include="Views\Account\Register.cshtml" />
-    <None Include="Views\Account\Index.cshtml" />
+    <Content Include="Areas\Account\Views\Account\LogOut.cshtml" />
+    <None Include="T4MVC.tt.hooks.t4" />
+    <None Include="T4MVC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4MVC.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\Account\Views\Account\Register.cshtml" />
+    <None Include="Areas\Account\Views\Account\Index.cshtml" />
     <Content Include="Views\Error\NotAllow.cshtml" />
     <Content Include="Views\Error\ServerError.cshtml" />
-    <Content Include="Views\Chat\Index.cshtml" />
+    <Content Include="Areas\Chat\Views\Chat\Index.cshtml" />
     <None Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <Content Include="Areas\UserProfile\Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -427,7 +477,17 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\Account\Models\" />
+    <Folder Include="Areas\Account\Views\Shared\" />
+    <Folder Include="Areas\AdminProfile\Controllers\" />
+    <Folder Include="Areas\AdminProfile\Models\" />
+    <Folder Include="Areas\AdminProfile\Views\Shared\" />
+    <Folder Include="Areas\Chat\Models\" />
+    <Folder Include="Areas\Chat\Views\Shared\" />
+    <Folder Include="Areas\UserProfile\Models\" />
+    <Folder Include="Areas\UserProfile\Views\Shared\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

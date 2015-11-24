@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MusicWave.Models;
 
 namespace MusicWave.Controllers
 {
-    public class HomeController : Controller
+    public partial class HomeController : Controller
     {
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View();
         }
-        
-        public ActionResult About()
+
+        public virtual ActionResult About()
         {
             ViewBag.Message = "This is the test project created on ASP.NET MVC framework. For those people who want to take me a job :)";
 
             return View();
         }
-        public ActionResult Contact()
+        public virtual ActionResult Contact()
         {
             return View();
         }

@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using MusicWave.Helpers;
+using MusicWave.Areas.Account.Helpers;
 using MusicWave.Models;
 
 namespace MusicWave
@@ -11,7 +11,6 @@ namespace MusicWave
     {
         protected void Application_Start()
         {
-            
             AreaRegistration.RegisterAllAreas();
 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

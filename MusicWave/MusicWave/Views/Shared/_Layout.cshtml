@@ -25,25 +25,25 @@
                 </button>
                 @if (Request.IsAuthenticated)
                 {
-                    @Html.ActionLink("Music WAVE", "Index", "User", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Music WAVE", MVC.UserProfile.User.Index(), new { @class = "navbar-brand" })
                 }
                 else
                 {
-                    @Html.ActionLink("Music WAVE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Music WAVE", MVC.Home.Index(), new { @class = "navbar-brand" })
                 }
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @if (Request.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Home", "Index", "User")</li>
+                        <li>@Html.ActionLink("Home",MVC.UserProfile.User.Index(), new { area = "UserProfile" }, null)</li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Home",MVC.Home.Index())</li>
                     }
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("About", MVC.Home.About())</li>
+                    <li>@Html.ActionLink("Contact", MVC.Home.Contact())</li>
                 </ul>
 
                 @Html.Partial("_LoginPartial")
