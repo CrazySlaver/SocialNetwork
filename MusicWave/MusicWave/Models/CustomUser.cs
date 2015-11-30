@@ -7,7 +7,7 @@ namespace MusicWave.Models
     public class CustomUser 
     {
         public Guid Id { get; set; }
-
+        
         [MinLength(2)]
         [MaxLength(20)]
         [Display(Name = "First name")]

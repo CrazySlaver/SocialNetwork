@@ -80,6 +80,10 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="reCAPTCHA.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\reCAPTCH.MVC.1.0.1\lib\net45\reCAPTCHA.MVC.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SimpleCrypto, Version=26.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleCrypto.0.3.30.26\lib\SimpleCrypto.dll</HintPath>
       <Private>True</Private>
@@ -246,6 +250,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\Twitter.cshtml" />
     <Content Include="App_Data\WorldDB.mdf" />
     <Content Include="App_Data\WorldDB_log.ldf">
       <DependentUpon>WorldDB.mdf</DependentUpon>
@@ -409,6 +414,7 @@
     <Content Include="Areas\UserProfile\Views\web.config" />
     <Content Include="Areas\Chat\Views\web.config" />
     <Content Include="Areas\AdminProfile\Views\web.config" />
+    <Content Include="App_Code\TwitterGoodies.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
