@@ -174,10 +174,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Account\AccessToDB\Security.cs" />
     <Compile Include="Areas\Account\AccessToDB\UserManipulation.cs" />
     <Compile Include="Areas\Account\AccountAreaRegistration.cs" />
+    <Compile Include="Areas\Account\Filters\CustomActionFilter.cs" />
     <Compile Include="Areas\AdminProfile\AdminProfileAreaRegistration.cs" />
     <Compile Include="Areas\Chat\ChatAreaRegistration.cs" />
+    <Compile Include="Areas\UserProfile\Filters\AccessToUserPageActionFilter.cs" />
     <Compile Include="Areas\UserProfile\UserProfileAreaRegistration.cs" />
     <Compile Include="Chat.ChatController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>

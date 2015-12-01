@@ -1,0 +1,29 @@
+   input {
+        max-width: 360px;
+        min-width: 170px;
+        width: 356px;
+    }
+
+    .form-inline .form-control {
+        display: inline-block;
+        width: 170px;
+        vertical-align: middle;
+        margin: 5px;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 52px;
+    }
+
+    h1 + p {
+        padding-left: 20%;
+        width: 85%;
+        text-align: left;
+        font-size: 16px;
+    }
+
+    .body-content {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
