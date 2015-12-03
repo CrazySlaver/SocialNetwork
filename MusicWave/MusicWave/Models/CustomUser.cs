@@ -28,7 +28,6 @@ namespace MusicWave.Models
         [MaxLength(20)]
         public string City { get; set; }
 
-        [MinLength(10)]
         [MaxLength(200)]
         [DataType(DataType.MultilineText)]
         [Display(Name = "About: ")]

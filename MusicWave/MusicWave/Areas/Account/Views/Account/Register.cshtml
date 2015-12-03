@@ -112,8 +112,6 @@
 
 <h2>Registration</h2>
 
-
-
 @using (Html.BeginForm(MVC.Account.Account.Register(), FormMethod.Post, new { enctype = "multipart/form-data", @id = "regForm" }))
 {
     @Html.AntiForgeryToken()
@@ -125,11 +123,30 @@
             <div class="wizard-step">
                 <h4>Step 1</h4>
                 <div class="form-group">
-
+                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
 
                     @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        <div class="input-group ">
+                            <div class="input-group-addon">
+                                <span id="basic-addon2">@@</span>
+                            </div>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", style = "width: 240px" } })
+
+                        </div>
                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -150,22 +167,8 @@
                 </div>
             </div>
 
-            <div class="wizard-step">
+            <div class="wizard-step confirm  hide-btn">
                 <h4>Step 2</h4>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -215,17 +218,15 @@
                         @Html.TextBox("ImageContentType", "", new { @class = "form-control", style = "width: 190px", placeholder = "Avatar", type = "text", name = "file", id = "file", @readonly = "readonly" })
                     </div>
                 </div>
-            </div>
 
-            <div class="wizard-step confirm  hide-btn">
-                <h4>Step 3</h4>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Description, htmlAttributes: new {@class = "control-label col-md-2"})
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Description, new {htmlAttributes = new {@class = "form-control", @style = "width:400px; max-width: 500px; height:300"}})
-                        @Html.ValidationMessageFor(model => model.Description, "", new {@class = "text-danger"})
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control ", style = "width=400px; height: 100px;", placeholder = "A few words about you..." } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                     </div>
                 </div>
+                
                 <div class="form-group ">
                     <div class="col-md-2"></div>
                     <div class="col-md-10">
@@ -236,11 +237,18 @@
                 </div>
             </div>
 
+            <div class="wizard-step ">
+                <h4>Step 3</h4>
+
+            </div>
+
             <div class="form-group">
+            <div class="col-md-2">
+                </div>
                 <div class="col-md-10">
-                    <input type="button" id="back-step" name="back-step" value="< Back" class="btn btn-default nav-back" />
-                    <input type="button" id="next-step" name="next-step" value="Next >" class="btn btn-default nav-next" />
-                    <input type="submit" value="Done" class="btn btn-default btn-submit" />
+                    <input type="button" id="back-step" name="back-step" value="< Back" class="btn btn-default nav-back"/>
+                    <input type="button" id="next-step" name="next-step" value="Next >" class="btn btn-default nav-next"/>
+                    <input type="submit" value="Done" class="btn btn-default btn-submit"/>
                 </div>
             </div>
         </fieldset>
