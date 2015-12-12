@@ -18,16 +18,16 @@ namespace MusicWave.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Nullable<System.DateTime> Age { get; set; }
-        public Nullable<bool> Sex { get; set; }
+        public Nullable<bool> Gender { get; set; }
         public string City { get; set; }
-        public string Description { get; set; }
+        public string AboutUser { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string ImageBase64 { get; set; }
         public string ImageContentType { get; set; }
         public string Cookies { get; set; }
-        public Nullable<System.Guid> RoleId { get; set; }
+        public System.Guid RoleId { get; set; }
     
-        public virtual Roles Roles { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

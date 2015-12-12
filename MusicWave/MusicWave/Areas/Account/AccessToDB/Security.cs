@@ -7,10 +7,10 @@ namespace MusicWave.Areas.Account.AccessToDB
 {
     public static class Security
     {
-        public static User CheckPassword(string email, string password)
+        public static User CheckPasswordAndRole(string email, string password)
         {
             User user = null;
-            using (var db = new WorldDBEntities2())
+            using (var db = new PeopleDBEntities())
             {
                 try
                 {

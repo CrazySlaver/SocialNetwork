@@ -11,7 +11,6 @@ namespace MusicWave.Areas.Account.AccessToDB
     {
         //TODO проверять адрес на существование в базе
         //TODO коректные сообщения обшибки (Error Class) возможно реализовать ErrorFilter
-        //TODO При регистрации (снять ограничение на поле "About", само поле увеличить)
         public bool CheckGender(string gender)
         {
             bool result = gender == "Male";
@@ -26,12 +25,12 @@ namespace MusicWave.Areas.Account.AccessToDB
         public Guid GetRole(string role)
         {
             var roleId = new Guid();
-            using (var db = new WorldDBEntities2())
+            using (var db = new PeopleDBEntities())
             {
                 ((IObjectContextAdapter)db).ObjectContext.CommandTimeout = 180;
                 try
                 {
-                    var user = db.Roles.FirstOrDefault(u => u.Name == role);
+                    var user = db.Role.FirstOrDefault(u => u.Name == role);
                     if (user != null)
                     {
                         roleId = user.RoleId;
@@ -47,7 +46,7 @@ namespace MusicWave.Areas.Account.AccessToDB
 
         public void AddUserToDb(CustomUser model)
         {
-            using (var db = new WorldDBEntities2())
+            using (var db = new PeopleDBEntities())
             {
                 var entity = new User()
                 {
@@ -56,10 +55,10 @@ namespace MusicWave.Areas.Account.AccessToDB
                     LastName = model.LastName,
                     Age = model.Age,
                     City = model.City,
-                    Description = model.Description,
+                    AboutUser = model.Description,
                     Email = model.Email,
                     Password = Crypto.SHA256(model.Password),
-                    Sex = CheckGender(model.Sex),
+                    Gender = CheckGender(model.Sex),
                     ImageBase64 = model.ImageBase64,
                     ImageContentType = model.ImageContentType,
                     RoleId = GetRole("user")

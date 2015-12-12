@@ -10,7 +10,7 @@ namespace MusicWave.Providers
         public override string[] GetRolesForUser(string email)
         {
             string[] role = new string[] { };
-            using (WorldDBEntities2 _db = new WorldDBEntities2())
+            using (PeopleDBEntities _db = new PeopleDBEntities())
             {
                 try
                 {
@@ -21,7 +21,7 @@ namespace MusicWave.Providers
                     if (user != null)
                     {
                         // получаем роль
-                        var userRole = _db.Roles.Find(user.RoleId);
+                        var userRole = _db.Role.Find(user.RoleId);
 
                         if (userRole != null)
                         {
@@ -40,7 +40,7 @@ namespace MusicWave.Providers
         {
             bool outputResult = false;
             // Находим пользователя
-            using (WorldDBEntities2 _db = new WorldDBEntities2())
+            using (PeopleDBEntities _db = new PeopleDBEntities())
             {
                 try
                 {
@@ -51,7 +51,7 @@ namespace MusicWave.Providers
                     if (user != null)
                     {
                         // получаем роль
-                        var userRole = _db.Roles.Find(user.RoleId);
+                        var userRole = _db.Role.Find(user.RoleId);
 
                         //сравниваем
                         if (userRole != null && userRole.Name == roleName)

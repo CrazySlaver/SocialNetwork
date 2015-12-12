@@ -15,7 +15,7 @@ namespace MusicWave.Areas.UserProfile.Filters
             User user = (User)filterContext.Controller.TempData["user"];
             if (user == null)
             {
-                using (var db = new WorldDBEntities2())
+                using (var db = new PeopleDBEntities())
                 {
                     try
                     {

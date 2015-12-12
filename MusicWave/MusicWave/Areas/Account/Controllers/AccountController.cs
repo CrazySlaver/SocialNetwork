@@ -1,13 +1,10 @@
-using System;
-using System.Linq;
 using System.Web;
-using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Security;
 using MusicWave.Areas.Account.AccessToDB;
-using MusicWave.Areas.Account.Filters;
 using MusicWave.Areas.Account.Helpers;
 using MusicWave.Models;
+using MusicWave.Providers;
 using reCAPTCHA.MVC;
 
 namespace MusicWave.Areas.Account.Controllers
@@ -53,12 +50,24 @@ namespace MusicWave.Areas.Account.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = Security.CheckPassword(model.Email, model.Password);
+                
+                var user = Security.CheckPasswordAndRole(model.Email, model.Password);
                 if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(model.Email, false);
                     TempData["user"] = user;
-                    return RedirectToAction(MVC.UserProfile.User.Index());
+                    var role = new MusicWaveRoleProviders();
+                    bool isUser = role.IsUserInRole(user.Email, "user");
+                    if (isUser)
+                    {
+                        return RedirectToAction(MVC.UserProfile.User.Index());
+                    }
+                    else
+                    {
+                        return RedirectToAction(MVC.AdminProfile.Admin.Index());
+                    }
+
+                    
                     
                 }
                 else

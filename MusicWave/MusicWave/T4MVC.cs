@@ -53,6 +53,7 @@ namespace T4MVC
     public class AdminProfileClass
     {
         public readonly string Name = "AdminProfile";
+        public MusicWave.Areas.AdminProfile.Controllers.AdminController Admin = new MusicWave.Areas.AdminProfile.Controllers.T4MVC_AdminController();
         public T4MVC.AdminProfile.SharedController Shared = new T4MVC.AdminProfile.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -152,6 +153,7 @@ namespace Links
         public static readonly string moment_with_locales_min_js = Url("moment-with-locales.min.js");
         public static readonly string moment_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/moment.min.js") ? Url("moment.min.js") : Url("moment.js");
         public static readonly string moment_min_js = Url("moment.min.js");
+        public static readonly string npm_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/npm.min.js") ? Url("npm.min.js") : Url("npm.js");
         public static readonly string respond_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/respond.min.js") ? Url("respond.min.js") : Url("respond.js");
         public static readonly string respond_min_js = Url("respond.min.js");
         public static readonly string slider_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/slider.min.js") ? Url("slider.min.js") : Url("slider.js");
@@ -256,9 +258,11 @@ namespace Links
         public static readonly string bootstrap_theme_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-theme.min.css") ? Url("bootstrap-theme.min.css") : Url("bootstrap-theme.css");
         public static readonly string bootstrap_theme_css_map = Url("bootstrap-theme.css.map");
         public static readonly string bootstrap_theme_min_css = Url("bootstrap-theme.min.css");
+        public static readonly string bootstrap_theme_min_css_map = Url("bootstrap-theme.min.css.map");
         public static readonly string bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.css") ? Url("bootstrap.min.css") : Url("bootstrap.css");
         public static readonly string bootstrap_css_map = Url("bootstrap.css.map");
         public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
+        public static readonly string bootstrap_min_css_map = Url("bootstrap.min.css.map");
         public static readonly string defaultAvatar_png = Url("defaultAvatar.png");
         public static readonly string error404_jpg = Url("error404.jpg");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -378,6 +382,7 @@ namespace Links
                 public const string moment_with_locales_min_js = "~/Scripts/moment-with-locales.min.js"; 
                 public const string moment_js = "~/Scripts/moment.js"; 
                 public const string moment_min_js = "~/Scripts/moment.min.js"; 
+                public const string npm_js = "~/Scripts/npm.js"; 
                 public const string respond_js = "~/Scripts/respond.js"; 
                 public const string respond_min_js = "~/Scripts/respond.min.js"; 
                 public const string slider_js = "~/Scripts/slider.js"; 

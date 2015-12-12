@@ -7,12 +7,14 @@ namespace MusicWave.Models
     public class CustomUser 
     {
         public Guid Id { get; set; }
-        
+
+        [Required(ErrorMessage = "First Name should not be empty")]
         [MinLength(2)]
         [MaxLength(20)]
         [Display(Name = "First name")]
         public string FirstName { get; set; }
 
+        [Required(ErrorMessage = "Last Name should not be empty")]
         [MinLength(2)]
         [MaxLength(20)]
         [Display(Name = "Last name")]
