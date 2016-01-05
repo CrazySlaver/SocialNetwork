@@ -33,8 +33,7 @@ namespace MusicWave.Areas.Account.Helpers
             }
             else
             {
-                //TODO прописать относительный путь
-                FileStream fs = new FileStream(@"D:\ProjectX\SocialNetwork\MusicWave\MusicWave\Content\defaultAvatar.png", FileMode.Open, FileAccess.Read);
+                var fs = new FileStream(@"D:\ProjectX\SocialNetwork\MusicWave\MusicWave\Content\defaultAvatar.png", FileMode.Open, FileAccess.Read);
 
                 // Create a byte array of file stream length
                 byte[] imageData = new byte[fs.Length];

@@ -11,8 +11,6 @@ namespace MusicWave
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-
-            //TODO при залогиненом пользователе старт приложения с странички пользователя
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(

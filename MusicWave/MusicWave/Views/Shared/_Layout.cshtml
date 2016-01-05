@@ -10,8 +10,9 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/")
+    @Styles.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
+    <script src="/Scripts/typeahead.jquery.js"></script>
     <link href="~/Content/footer.css" rel="stylesheet">
 </head>
 <body>
@@ -26,7 +27,14 @@
                     </button>
                     @if (Request.IsAuthenticated)
                     {
-                        @Html.ActionLink("Music WAVE", MVC.UserProfile.User.Index(), new { @class = "navbar-brand" })
+                        if (Roles.IsUserInRole(User.Identity.Name, "user"))
+                        {
+                            @Html.ActionLink("Music WAVE", MVC.UserProfile.User.Index(), new { @class = "navbar-brand" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Music WAVE", MVC.AdminProfile.Admin.Index(), new { @class = "navbar-brand" })
+                        }
                     }
                     else
                     {

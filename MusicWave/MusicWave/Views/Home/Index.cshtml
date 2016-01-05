@@ -19,6 +19,7 @@
                 </p>
                 @using (Html.BeginForm(MVC.Account.Account.LogIn(), FormMethod.Post))
                 {
+                    @Html.AntiForgeryToken()
                     <br />
                     <fieldset>
                         <div class="form-inline">
@@ -35,7 +36,7 @@
                         </div>
                         <div class="form-inline">
                             <div class="form-group ">
-                                <input type="submit" value="Log In" class="btn btn-default" />
+                                <input type="submit" value="Log In" class="btn btn-default"/>
                             </div>
                         </div>
                     </fieldset>

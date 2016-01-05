@@ -33,6 +33,8 @@ public static partial class MVC
     public static AdminProfileClass AdminProfile { get { return s_AdminProfile; } }
     static readonly ChatClass s_Chat = new ChatClass();
     public static ChatClass Chat { get { return s_Chat; } }
+    static readonly HomeClass s_Home = new HomeClass();
+    public static HomeClass HomeArea { get { return s_Home; } }
     static readonly UserProfileClass s_UserProfile = new UserProfileClass();
     public static UserProfileClass UserProfile { get { return s_UserProfile; } }
     public static MusicWave.Controllers.ErrorController Error = new MusicWave.Controllers.T4MVC_ErrorController();
@@ -62,6 +64,12 @@ namespace T4MVC
         public readonly string Name = "Chat";
         public MusicWave.Areas.Chat.Controllers.ChatController Chat = new MusicWave.Areas.Chat.Controllers.T4MVC_ChatController();
         public T4MVC.Chat.SharedController Shared = new T4MVC.Chat.SharedController();
+    }
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class HomeClass
+    {
+        public readonly string Name = "Home";
+        public T4MVC.Home.SharedController Shared = new T4MVC.Home.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class UserProfileClass
@@ -110,6 +118,19 @@ internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.Action
     public string Protocol { get; set; }
     public RouteValueDictionary RouteValueDictionary { get; set; }
 }
+[GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+internal partial class T4MVC_System_Web_Mvc_JsonResult : System.Web.Mvc.JsonResult, IT4MVCActionResult
+{
+    public T4MVC_System_Web_Mvc_JsonResult(string area, string controller, string action, string protocol = null): base()
+    {
+        this.InitMVCT4Result(area, controller, action, protocol);
+    }
+    
+    public string Controller { get; set; }
+    public string Action { get; set; }
+    public string Protocol { get; set; }
+    public RouteValueDictionary RouteValueDictionary { get; set; }
+}
 
 
 
@@ -121,6 +142,7 @@ namespace Links
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string _references_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/_references.min.js") ? Url("_references.min.js") : Url("_references.js");
+        public static readonly string bloodhound_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bloodhound.min.js") ? Url("bloodhound.min.js") : Url("bloodhound.js");
         public static readonly string bootstrap_datetimepicker_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-datetimepicker.min.js") ? Url("bootstrap-datetimepicker.min.js") : Url("bootstrap-datetimepicker.js");
         public static readonly string bootstrap_datetimepicker_min_js = Url("bootstrap-datetimepicker.min.js");
         public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
@@ -131,6 +153,8 @@ namespace Links
         public static readonly string jquery_2_1_4_min_map = Url("jquery-2.1.4.min.map");
         public static readonly string jquery_ui_1_8_13_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-1.8.13.min.js") ? Url("jquery-ui-1.8.13.min.js") : Url("jquery-ui-1.8.13.js");
         public static readonly string jquery_ui_1_8_13_min_js = Url("jquery-ui-1.8.13.min.js");
+        public static readonly string jquery_ui_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui.min.js") ? Url("jquery-ui.min.js") : Url("jquery-ui.js");
+        public static readonly string jquery_ui_min_js = Url("jquery-ui.min.js");
         public static readonly string jquery_ui_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui.unobtrusive.min.js") ? Url("jquery-ui.unobtrusive.min.js") : Url("jquery-ui.unobtrusive.js");
         public static readonly string jquery_signalR_2_2_0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.signalR-2.2.0.min.js") ? Url("jquery.signalR-2.2.0.min.js") : Url("jquery.signalR-2.2.0.js");
         public static readonly string jquery_signalR_2_2_0_min_js = Url("jquery.signalR-2.2.0.min.js");
@@ -157,6 +181,9 @@ namespace Links
         public static readonly string respond_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/respond.min.js") ? Url("respond.min.js") : Url("respond.js");
         public static readonly string respond_min_js = Url("respond.min.js");
         public static readonly string slider_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/slider.min.js") ? Url("slider.min.js") : Url("slider.js");
+        public static readonly string typeahead_bundle_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/typeahead.bundle.min.js") ? Url("typeahead.bundle.min.js") : Url("typeahead.bundle.js");
+        public static readonly string typeahead_bundle_min_js = Url("typeahead.bundle.min.js");
+        public static readonly string typeahead_jquery_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/typeahead.jquery.min.js") ? Url("typeahead.jquery.min.js") : Url("typeahead.jquery.js");
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -342,6 +369,7 @@ namespace Links
         
         }
     
+        public static readonly string typeahead_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/typeahead.min.css") ? Url("typeahead.min.css") : Url("typeahead.css");
     }
 
     
@@ -353,6 +381,7 @@ namespace Links
             public static class Assets
             {
                 public const string _references_js = "~/Scripts/_references.js"; 
+                public const string bloodhound_js = "~/Scripts/bloodhound.js"; 
                 public const string bootstrap_datetimepicker_js = "~/Scripts/bootstrap-datetimepicker.js"; 
                 public const string bootstrap_datetimepicker_min_js = "~/Scripts/bootstrap-datetimepicker.min.js"; 
                 public const string bootstrap_js = "~/Scripts/bootstrap.js"; 
@@ -362,6 +391,8 @@ namespace Links
                 public const string jquery_2_1_4_min_js = "~/Scripts/jquery-2.1.4.min.js"; 
                 public const string jquery_ui_1_8_13_js = "~/Scripts/jquery-ui-1.8.13.js"; 
                 public const string jquery_ui_1_8_13_min_js = "~/Scripts/jquery-ui-1.8.13.min.js"; 
+                public const string jquery_ui_js = "~/Scripts/jquery-ui.js"; 
+                public const string jquery_ui_min_js = "~/Scripts/jquery-ui.min.js"; 
                 public const string jquery_ui_unobtrusive_js = "~/Scripts/jquery-ui.unobtrusive.js"; 
                 public const string jquery_signalR_2_2_0_js = "~/Scripts/jquery.signalR-2.2.0.js"; 
                 public const string jquery_signalR_2_2_0_min_js = "~/Scripts/jquery.signalR-2.2.0.min.js"; 
@@ -386,6 +417,9 @@ namespace Links
                 public const string respond_js = "~/Scripts/respond.js"; 
                 public const string respond_min_js = "~/Scripts/respond.min.js"; 
                 public const string slider_js = "~/Scripts/slider.js"; 
+                public const string typeahead_bundle_js = "~/Scripts/typeahead.bundle.js"; 
+                public const string typeahead_bundle_min_js = "~/Scripts/typeahead.bundle.min.js"; 
+                public const string typeahead_jquery_js = "~/Scripts/typeahead.jquery.js"; 
             }
         }
         public static partial class Content 
@@ -460,6 +494,7 @@ namespace Links
                 public const string landing_page_css = "~/Content/landing-page.css";
                 public const string Site_css = "~/Content/Site.css";
                 public const string slider_css = "~/Content/slider.css";
+                public const string typeahead_css = "~/Content/typeahead.css";
             }
         }
     }

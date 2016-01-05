@@ -46,11 +46,12 @@ namespace MusicWave.Areas.Account.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public virtual ActionResult LogIn(LogInUser model)
         {
+            //string error;
             if (ModelState.IsValid)
             {
-                
                 var user = Security.CheckPasswordAndRole(model.Email, model.Password);
                 if (user != null)
                 {
@@ -66,17 +67,17 @@ namespace MusicWave.Areas.Account.Controllers
                     {
                         return RedirectToAction(MVC.AdminProfile.Admin.Index());
                     }
-
-                    
-                    
                 }
                 else
                 {
-                    ModelState.AddModelError("CustomError", "Login data is incorrect.");
+                    //TODO исправить ошибку при вводе некоректного логина и пароля при входе на сайт
+                    //TempData["Result"] = model;
+                    ModelState.AddModelError("", "Login data is incorrect.");
                 }
 
             }
-            return RedirectToAction("Index", "Home", model);
+            //return View("Index","Home", new{area="",model});
+            return RedirectToAction("Index","Home", new{area="",model});
         }
 
         public virtual ActionResult LogOut()
