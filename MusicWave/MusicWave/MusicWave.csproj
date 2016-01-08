@@ -164,15 +164,19 @@
   <ItemGroup>
     <Compile Include="Account.AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Account.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="AdminProfile.AdminController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="AdminProfile.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -185,34 +189,40 @@
     <Compile Include="Areas\AdminProfile\Controllers\AdminController.cs" />
     <Compile Include="Areas\AdminProfile\DAL\UserModel.cs" />
     <Compile Include="Areas\Chat\ChatAreaRegistration.cs" />
+    <Compile Include="Areas\Error\ErrorAreaRegistration.cs" />
     <Compile Include="Areas\Home\HomeAreaRegistration.cs" />
     <Compile Include="Areas\UserProfile\Filters\AccessToUserPageActionFilter.cs" />
     <Compile Include="Areas\UserProfile\UserProfileAreaRegistration.cs" />
+    <Compile Include="Areas\Account\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Chat\Controllers\ChatController.cs" />
     <Compile Include="Chat.ChatController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Chat.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Areas\Account\Controllers\AccountController.cs" />
-    <Compile Include="Areas\Chat\Controllers\ChatController.cs" />
-    <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Areas\Error\Controllers\ErrorController.cs" />
     <Compile Include="Areas\UserProfile\Controllers\UserController.cs" />
-    <Compile Include="ErrorController.generated.cs">
+    <Compile Include="Areas\Home\Controllers\HomeController.cs" />
+    <Compile Include="Error.ErrorController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Error.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Areas\Account\Helpers\UserModelBinder.cs" />
+    <Compile Include="Areas\Chat\Hubs\SignalRChatHub.cs" />
+    <Compile Include="Home.HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Home.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="HomeController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\Chat\Hubs\SignalRChatHub.cs" />
     <Compile Include="Models\CustomUser.cs" />
     <Compile Include="Models\LogInUser.cs" />
     <Compile Include="Models\PeopleModel.Context.cs">
@@ -241,20 +251,20 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\MusicWaveRoleProviders.cs" />
-    <Compile Include="SharedController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="T4MVC.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>T4MVC.tt</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="UserProfile.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="UserProfile.UserController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -262,6 +272,9 @@
     <Content Include="App_Data\PeopleDB.mdf" />
     <Content Include="App_Data\PeopleDB_log.ldf">
       <DependentUpon>PeopleDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="Areas\Home\Views\_ViewStart.cshtml">
+      <SubType>Code</SubType>
     </Content>
     <Content Include="Content\background1.jpg" />
     <Content Include="Content\background2.jpg" />
@@ -428,6 +441,7 @@
       <LastGenOutput>PeopleModel.cs</LastGenOutput>
     </Content>
     <None Include="Areas\AdminProfile\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Error\Views\web.config" />
     <Content Include="Areas\Home\Views\web.config" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
@@ -466,7 +480,16 @@
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\typeahead.jquery.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="T4MVC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4MVC.cs</LastGenOutput>
+    </Content>
     <None Include="T4MVC.tt.settings.xml" />
+    <Content Include="Areas\Error\Views\Error\NotAllow.cshtml" />
+    <Content Include="Areas\Error\Views\Error\NotFound.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\Error\Views\Error\ServerError.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -476,27 +499,18 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Error\NotFound.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js.map" />
     <Content Include="Areas\Account\Views\Account\LogOut.cshtml" />
     <None Include="T4MVC.tt.hooks.t4" />
-    <None Include="T4MVC.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>T4MVC.cs</LastGenOutput>
-    </None>
     <None Include="Areas\Account\Views\Account\Register.cshtml" />
     <None Include="Areas\Account\Views\Account\Index.cshtml" />
-    <Content Include="Views\Error\NotAllow.cshtml" />
-    <Content Include="Views\Error\ServerError.cshtml" />
     <Content Include="Areas\Chat\Views\Chat\Index.cshtml" />
-    <None Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\UserProfile\Views\User\Index.cshtml" />
+    <Content Include="Areas\Home\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Home\Views\Home\About.cshtml" />
+    <Content Include="Areas\Home\Views\Home\Contact.cshtml" />
+    <Content Include="Areas\Home\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Error\Views\Shared\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -512,9 +526,8 @@
     <Folder Include="Areas\AdminProfile\Views\Shared\" />
     <Folder Include="Areas\Chat\Models\" />
     <Folder Include="Areas\Chat\Views\Shared\" />
-    <Folder Include="Areas\Home\Controllers\" />
+    <Folder Include="Areas\Error\Models\" />
     <Folder Include="Areas\Home\Models\" />
-    <Folder Include="Areas\Home\Views\Shared\" />
     <Folder Include="Areas\UserProfile\Models\" />
     <Folder Include="Areas\UserProfile\Views\Shared\" />
   </ItemGroup>

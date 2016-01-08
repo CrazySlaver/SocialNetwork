@@ -35,7 +35,7 @@ namespace MusicWave.Areas.Account.Controllers
             if (ModelState.IsValid)
             {
                 _user.AddUserToDb(model);
-                return RedirectToAction(MVC.Home.Index());
+                return RedirectToAction("Index","Home");
             }
             else
             {
@@ -61,11 +61,11 @@ namespace MusicWave.Areas.Account.Controllers
                     bool isUser = role.IsUserInRole(user.Email, "user");
                     if (isUser)
                     {
-                        return RedirectToAction(MVC.UserProfile.User.Index());
+                        return RedirectToAction("Index", "User", new {area="UserProfile"});
                     }
                     else
                     {
-                        return RedirectToAction(MVC.AdminProfile.Admin.Index());
+                        return RedirectToAction("Index", "Admin",new{area="AdminProfile"});
                     }
                 }
                 else
@@ -77,13 +77,13 @@ namespace MusicWave.Areas.Account.Controllers
 
             }
             //return View("Index","Home", new{area="",model});
-            return RedirectToAction("Index","Home", new{area="",model});
+            return RedirectToAction("Index","Home", new{area="Home",model});
         }
 
         public virtual ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction(MVC.Home.Index());
+            return RedirectToAction("Index","Home",new {area="Home"});
         }
     }
 }

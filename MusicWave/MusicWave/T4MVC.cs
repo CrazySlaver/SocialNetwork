@@ -33,13 +33,12 @@ public static partial class MVC
     public static AdminProfileClass AdminProfile { get { return s_AdminProfile; } }
     static readonly ChatClass s_Chat = new ChatClass();
     public static ChatClass Chat { get { return s_Chat; } }
+    static readonly ErrorClass s_Error = new ErrorClass();
+    public static ErrorClass Error { get { return s_Error; } }
     static readonly HomeClass s_Home = new HomeClass();
-    public static HomeClass HomeArea { get { return s_Home; } }
+    public static HomeClass Home { get { return s_Home; } }
     static readonly UserProfileClass s_UserProfile = new UserProfileClass();
     public static UserProfileClass UserProfile { get { return s_UserProfile; } }
-    public static MusicWave.Controllers.ErrorController Error = new MusicWave.Controllers.T4MVC_ErrorController();
-    public static MusicWave.Controllers.HomeController Home = new MusicWave.Controllers.T4MVC_HomeController();
-    public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
 namespace T4MVC
@@ -66,9 +65,17 @@ namespace T4MVC
         public T4MVC.Chat.SharedController Shared = new T4MVC.Chat.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class ErrorClass
+    {
+        public readonly string Name = "Error";
+        public MusicWave.Controllers.ErrorController Error = new MusicWave.Controllers.T4MVC_ErrorController();
+        public T4MVC.Error.SharedController Shared = new T4MVC.Error.SharedController();
+    }
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class HomeClass
     {
         public readonly string Name = "Home";
+        public MusicWave.Areas.Home.Controllers.HomeController Home = new MusicWave.Areas.Home.Controllers.T4MVC_HomeController();
         public T4MVC.Home.SharedController Shared = new T4MVC.Home.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -91,19 +98,6 @@ namespace T4MVC
 }
 
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-internal partial class T4MVC_System_Web_Mvc_ViewResult : System.Web.Mvc.ViewResult, IT4MVCActionResult
-{
-    public T4MVC_System_Web_Mvc_ViewResult(string area, string controller, string action, string protocol = null): base()
-    {
-        this.InitMVCT4Result(area, controller, action, protocol);
-    }
-    
-    public string Controller { get; set; }
-    public string Action { get; set; }
-    public string Protocol { get; set; }
-    public RouteValueDictionary RouteValueDictionary { get; set; }
-}
-[GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.ActionResult, IT4MVCActionResult
 {
     public T4MVC_System_Web_Mvc_ActionResult(string area, string controller, string action, string protocol = null): base()
@@ -122,6 +116,19 @@ internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.Action
 internal partial class T4MVC_System_Web_Mvc_JsonResult : System.Web.Mvc.JsonResult, IT4MVCActionResult
 {
     public T4MVC_System_Web_Mvc_JsonResult(string area, string controller, string action, string protocol = null): base()
+    {
+        this.InitMVCT4Result(area, controller, action, protocol);
+    }
+    
+    public string Controller { get; set; }
+    public string Action { get; set; }
+    public string Protocol { get; set; }
+    public RouteValueDictionary RouteValueDictionary { get; set; }
+}
+[GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+internal partial class T4MVC_System_Web_Mvc_ViewResult : System.Web.Mvc.ViewResult, IT4MVCActionResult
+{
+    public T4MVC_System_Web_Mvc_ViewResult(string area, string controller, string action, string protocol = null): base()
     {
         this.InitMVCT4Result(area, controller, action, protocol);
     }
