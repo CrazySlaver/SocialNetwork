@@ -1708,9 +1708,9 @@
             if (!parsedDate.isValid()) {
                 throw new TypeError('defaultDate() Could not parse date parameter: ' + defaultDate);
             }
-            if (!isValid(parsedDate)) {
-                throw new TypeError('defaultDate() date passed is invalid according to component setup validations');
-            }
+            //if (!isValid(parsedDate)) {
+            //    throw new TypeError('defaultDate() date passed is invalid according to component setup validations');
+            //}
 
             options.defaultDate = parsedDate;
 

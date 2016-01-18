@@ -6,14 +6,11 @@
     ViewBag.Title = "Registration";
     Layout = "~/Areas/Home/Views/Shared/_Layout.cshtml";
 }
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
 
 <script type="text/javascript" src="/scripts/moment.min.js"></script>
 <script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="/scripts/bootstrap-datetimepicker.js"></script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
 <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
 <script type="text/javascript">
     $(document).on('change', '.btn-file :file', function () {
@@ -37,7 +34,7 @@
 
         });
     });
-
+    
     $(function () {
         var dateNow = new Date();
         $('#datetimepicker10').datetimepicker({
@@ -179,7 +176,7 @@
                                 <span class="glyphicon glyphicon-calendar">
                                 </span>
                             </span>
-                            @Html.TextBoxFor(model => model.Age, new { @class = "form-control" })
+                            @Html.TextBoxFor(model => model.Age, new { @class = "form-control"})
                         </div>
                     </div>
                 </div>

@@ -20,7 +20,7 @@ namespace MusicWave.Models
         [Display(Name = "Last name")]
         public string LastName { get; set; }
 
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [Display(Name = "Birthday")]
         public DateTime Age { get; set; }
         

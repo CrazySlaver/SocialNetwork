@@ -12,8 +12,11 @@ namespace MusicWave.Areas.Account.Controllers
     //TODO логотип и иконка
     public partial class AccountController : Controller
     {
-        private readonly UserManipulation _user = new UserManipulation();
-
+        private IUserDb _userDb;
+        public AccountController(IUserDb userDb)
+        {
+            _userDb = userDb;
+        }
         public virtual ActionResult Index()
         {
             return View();
@@ -29,12 +32,13 @@ namespace MusicWave.Areas.Account.Controllers
         //[CustomActionFilter]
         public virtual ActionResult Register(HttpPostedFileBase file, [ModelBinder(typeof(UserModelBinder))] CustomUser model, bool? captchaValid, string captchaErrorMessage)
         {
+            
             if (captchaValid != null && !(bool)captchaValid)
                 ModelState.AddModelError("captcha", captchaErrorMessage);
 
             if (ModelState.IsValid)
             {
-                _user.AddUserToDb(model);
+                _userDb.AddUserToDb(model);
                 return RedirectToAction("Index","Home");
             }
             else

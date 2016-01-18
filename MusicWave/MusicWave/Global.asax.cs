@@ -3,8 +3,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using MusicWave.Areas.Account.AccessToDB;
 using MusicWave.Areas.Account.Helpers;
-using MusicWave.Controllers;
+using StructureMap;
 using MusicWave.Models;
 
 namespace MusicWave
@@ -13,18 +14,28 @@ namespace MusicWave
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
+            //AreaRegistration.RegisterAllAreas();
 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             ModelBinders.Binders.Add(typeof(CustomUser), new UserModelBinder());
 
+            ObjectFactory.Initialize(cfg =>
+            {
+                cfg.For<IUserDb>()
+                    .Use<UserDb>();
+            });
+            ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
+            AreaRegistration.RegisterAllAreas();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            
+            
 
 
+            //DependencyResolver.SetResolver(new StructureMapDependencyResolver());
         }
-
+        #region if error
         //protected void Application_Error(object sender, EventArgs e)
         //{
 
@@ -73,7 +84,7 @@ namespace MusicWave
         //    controller.Execute(new RequestContext(new HttpContextWrapper(Context), routeData));
 
         //}
-
+        #endregion
 
     }
 }
