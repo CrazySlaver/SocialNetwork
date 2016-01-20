@@ -150,8 +150,8 @@ namespace Links
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string _references_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/_references.min.js") ? Url("_references.min.js") : Url("_references.js");
         public static readonly string bloodhound_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bloodhound.min.js") ? Url("bloodhound.min.js") : Url("bloodhound.js");
-        public static readonly string bootstrap_datetimepicker_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-datetimepicker.min.js") ? Url("bootstrap-datetimepicker.min.js") : Url("bootstrap-datetimepicker.js");
-        public static readonly string bootstrap_datetimepicker_min_js = Url("bootstrap-datetimepicker.min.js");
+        public static readonly string bootstrap_datepicker_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-datepicker.min.js") ? Url("bootstrap-datepicker.min.js") : Url("bootstrap-datepicker.js");
+        public static readonly string bootstrap_datepicker_min_js = Url("bootstrap-datepicker.min.js");
         public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
         public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
         public static readonly string jquery_2_1_4_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.4.intellisense.min.js") ? Url("jquery-2.1.4.intellisense.min.js") : Url("jquery-2.1.4.intellisense.js");
@@ -286,9 +286,9 @@ namespace Links
             public static readonly string wells_less = Url("wells.less");
         }
     
+        public static readonly string bootstrap_datepicker3_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-datepicker3.min.css") ? Url("bootstrap-datepicker3.min.css") : Url("bootstrap-datepicker3.css");
+        public static readonly string bootstrap_datepicker3_min_css = Url("bootstrap-datepicker3.min.css");
         public static readonly string bootstrap_datetimepicker_build_less = Url("bootstrap-datetimepicker-build.less");
-        public static readonly string bootstrap_datetimepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-datetimepicker.min.css") ? Url("bootstrap-datetimepicker.min.css") : Url("bootstrap-datetimepicker.css");
-        public static readonly string bootstrap_datetimepicker_min_css = Url("bootstrap-datetimepicker.min.css");
         public static readonly string bootstrap_theme_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-theme.min.css") ? Url("bootstrap-theme.min.css") : Url("bootstrap-theme.css");
         public static readonly string bootstrap_theme_css_map = Url("bootstrap-theme.css.map");
         public static readonly string bootstrap_theme_min_css = Url("bootstrap-theme.min.css");
@@ -389,8 +389,8 @@ namespace Links
             {
                 public const string _references_js = "~/Scripts/_references.js"; 
                 public const string bloodhound_js = "~/Scripts/bloodhound.js"; 
-                public const string bootstrap_datetimepicker_js = "~/Scripts/bootstrap-datetimepicker.js"; 
-                public const string bootstrap_datetimepicker_min_js = "~/Scripts/bootstrap-datetimepicker.min.js"; 
+                public const string bootstrap_datepicker_js = "~/Scripts/bootstrap-datepicker.js"; 
+                public const string bootstrap_datepicker_min_js = "~/Scripts/bootstrap-datepicker.min.js"; 
                 public const string bootstrap_js = "~/Scripts/bootstrap.js"; 
                 public const string bootstrap_min_js = "~/Scripts/bootstrap.min.js"; 
                 public const string jquery_2_1_4_intellisense_js = "~/Scripts/jquery-2.1.4.intellisense.js"; 
@@ -489,8 +489,8 @@ namespace Links
             }
             public static class Assets
             {
-                public const string bootstrap_datetimepicker_css = "~/Content/bootstrap-datetimepicker.css";
-                public const string bootstrap_datetimepicker_min_css = "~/Content/bootstrap-datetimepicker.min.css";
+                public const string bootstrap_datepicker3_css = "~/Content/bootstrap-datepicker3.css";
+                public const string bootstrap_datepicker3_min_css = "~/Content/bootstrap-datepicker3.min.css";
                 public const string bootstrap_theme_css = "~/Content/bootstrap-theme.css";
                 public const string bootstrap_theme_min_css = "~/Content/bootstrap-theme.min.css";
                 public const string bootstrap_css = "~/Content/bootstrap.css";

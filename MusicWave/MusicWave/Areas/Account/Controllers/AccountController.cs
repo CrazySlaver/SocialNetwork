@@ -32,18 +32,27 @@ namespace MusicWave.Areas.Account.Controllers
         //[CustomActionFilter]
         public virtual ActionResult Register(HttpPostedFileBase file, [ModelBinder(typeof(UserModelBinder))] CustomUser model, bool? captchaValid, string captchaErrorMessage)
         {
-            
+            string error = "Registration data is incorrect.";
             if (captchaValid != null && !(bool)captchaValid)
-                ModelState.AddModelError("captcha", captchaErrorMessage);
+            {
+                error = error + "Check the captcha.";
 
+            }
             if (ModelState.IsValid)
             {
-                _userDb.AddUserToDb(model);
-                return RedirectToAction("Index","Home");
+                bool checkEmail = _userDb.CheckEmail(model.Email);
+                if (checkEmail)
+                {
+                    _userDb.AddUserToDb(model);
+                    return RedirectToAction(MVC.Home.Home.Index());
+                } 
+                error = "Email is already exist.";
+                ModelState.AddModelError("", error);
+                
             }
             else
             {
-                ModelState.AddModelError("", "Login data is incorrect.");
+                ModelState.AddModelError("", error);
             }
             return View(model);
 

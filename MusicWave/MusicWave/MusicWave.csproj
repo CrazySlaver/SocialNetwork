@@ -296,13 +296,13 @@
     <Content Include="App_Data\PeopleDB_log.ldf">
       <DependentUpon>PeopleDB.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\bootstrap-datepicker3.min.css" />
     <Content Include="Areas\Home\Views\_ViewStart.cshtml">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Content\background1.jpg" />
     <Content Include="Content\background2.jpg" />
-    <Content Include="Content\bootstrap-datetimepicker.css" />
-    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-datepicker3.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -358,8 +358,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Scripts\bloodhound.js" />
-    <Content Include="Scripts\bootstrap-datetimepicker.js" />
-    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />

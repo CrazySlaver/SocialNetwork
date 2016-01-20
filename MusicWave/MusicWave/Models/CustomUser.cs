@@ -20,8 +20,10 @@ namespace MusicWave.Models
         [Display(Name = "Last name")]
         public string LastName { get; set; }
 
-        //[DataType(DataType.Date)]
+        
         [Display(Name = "Birthday")]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd.MM.yy}", ApplyFormatInEditMode = true)]
+
         public DateTime Age { get; set; }
         
         public string Sex { get; set; }
@@ -40,15 +42,15 @@ namespace MusicWave.Models
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email adress:")]
         public string Email { get; set; }
-        
-        [Required]
+
+        [Required(ErrorMessage = "Password should not be empty")]
         [DataType(DataType.Password)]
         [MinLength(5)]
         [MaxLength(200)]
         [Display(Name = "Password: ")]
         public string Password { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Confirm Password should not be empty")]
         [DataType(DataType.Password)]
         [Compare("Password")]
         [Display(Name = "Confirm password")]

@@ -7,11 +7,11 @@
     Layout = "~/Areas/Home/Views/Shared/_Layout.cshtml";
 }
 
-
 <script type="text/javascript" src="/scripts/moment.min.js"></script>
 <script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
-<script type="text/javascript" src="/scripts/bootstrap-datetimepicker.js"></script>
-<link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
+<script type="text/javascript" src="/scripts/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="/Content/bootstrap-datepicker3.min.css"/>
+
 <script type="text/javascript">
     $(document).on('change', '.btn-file :file', function () {
         var input = $(this),
@@ -34,16 +34,18 @@
 
         });
     });
-    
-    $(function () {
-        var dateNow = new Date();
-        $('#datetimepicker10').datetimepicker({
-            viewMode: 'years',
-            format: 'DD/MM/YYYY',
-            maxDate: new Date(),
-            defaultDate: dateNow
-
+    $(document).ready(function () {
+        $('.datepicker').datepicker({
+            
+            autoclose : true,
+            startDate: '01/01/1920',
+            endDate: new Date()
         });
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        var year = d.getFullYear();
+        $('.datepicker').val(year+"/"+month+"/"+day);
     });
     $(function () {
 
@@ -170,17 +172,14 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <div class='input-group date' id='datetimepicker10' style="width: 276px">
-
+                        <div class='input-group' style="width: 276px">
                             <span class=" input-group-addon">
-                                <span class="glyphicon glyphicon-calendar">
-                                </span>
+                                <span class="glyphicon glyphicon-calendar"></span>
                             </span>
-                            @Html.TextBoxFor(model => model.Age, new { @class = "form-control"})
+                            <input class="form-control datepicker" id="Age" name="Age" data-val="false" />
                         </div>
                     </div>
                 </div>
-
                 <div class="form-group ">
                     <div class="col-md-2"></div>
                     <div class="btn-group col-md-10" data-toggle="buttons">
@@ -223,7 +222,7 @@
                         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                
+
                 <div class="form-group ">
                     <div class="col-md-2"></div>
                     <div class="col-md-10">
@@ -240,12 +239,12 @@
             </div>
 
             <div class="form-group">
-            <div class="col-md-2">
+                <div class="col-md-2">
                 </div>
                 <div class="col-md-10">
-                    <input type="button" id="back-step" name="back-step" value="< Back" class="btn btn-default nav-back"/>
-                    <input type="button" id="next-step" name="next-step" value="Next >" class="btn btn-default nav-next"/>
-                    <input type="submit" value="Done" class="btn btn-default btn-submit"/>
+                    <input type="button" id="back-step" name="back-step" value="< Back" class="btn btn-default nav-back" />
+                    <input type="button" id="next-step" name="next-step" value="Next >" class="btn btn-default nav-next" />
+                    <input type="submit" value="Done" class="btn btn-default btn-submit" />
                 </div>
             </div>
         </fieldset>
