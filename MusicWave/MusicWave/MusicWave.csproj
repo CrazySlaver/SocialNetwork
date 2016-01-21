@@ -466,6 +466,7 @@
     <None Include="Areas\AdminProfile\Views\Admin\Index.cshtml" />
     <Content Include="Areas\Error\Views\web.config" />
     <Content Include="Areas\Home\Views\web.config" />
+    <Content Include="Areas\Home\Views\Shared\_AuthMenu.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
