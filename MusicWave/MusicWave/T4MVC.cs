@@ -31,8 +31,6 @@ public static partial class MVC
     public static AccountClass Account { get { return s_Account; } }
     static readonly AdminProfileClass s_AdminProfile = new AdminProfileClass();
     public static AdminProfileClass AdminProfile { get { return s_AdminProfile; } }
-    static readonly ChatClass s_Chat = new ChatClass();
-    public static ChatClass Chat { get { return s_Chat; } }
     static readonly ErrorClass s_Error = new ErrorClass();
     public static ErrorClass Error { get { return s_Error; } }
     static readonly HomeClass s_Home = new HomeClass();
@@ -58,13 +56,6 @@ namespace T4MVC
         public T4MVC.AdminProfile.SharedController Shared = new T4MVC.AdminProfile.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class ChatClass
-    {
-        public readonly string Name = "Chat";
-        public MusicWave.Areas.Chat.Controllers.ChatController Chat = new MusicWave.Areas.Chat.Controllers.T4MVC_ChatController();
-        public T4MVC.Chat.SharedController Shared = new T4MVC.Chat.SharedController();
-    }
-    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class ErrorClass
     {
         public readonly string Name = "Error";
@@ -82,6 +73,7 @@ namespace T4MVC
     public class UserProfileClass
     {
         public readonly string Name = "UserProfile";
+        public MusicWave.Areas.UserProfile.Controllers.ChatController Chat = new MusicWave.Areas.UserProfile.Controllers.T4MVC_ChatController();
         public MusicWave.Areas.UserProfile.Controllers.UserController User = new MusicWave.Areas.UserProfile.Controllers.T4MVC_UserController();
         public T4MVC.UserProfile.SharedController Shared = new T4MVC.UserProfile.SharedController();
     }
@@ -191,6 +183,19 @@ namespace Links
         public static readonly string typeahead_bundle_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/typeahead.bundle.min.js") ? Url("typeahead.bundle.min.js") : Url("typeahead.bundle.js");
         public static readonly string typeahead_bundle_min_js = Url("typeahead.bundle.min.js");
         public static readonly string typeahead_jquery_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/typeahead.jquery.min.js") ? Url("typeahead.jquery.min.js") : Url("typeahead.jquery.js");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class ui {
+            private const string URLPATH = "~/Scripts/ui";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string jquery_ui_core_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.core.min.js") ? Url("jquery.ui.core.min.js") : Url("jquery.ui.core.js");
+            public static readonly string jquery_ui_dialog_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.dialog.min.js") ? Url("jquery.ui.dialog.min.js") : Url("jquery.ui.dialog.js");
+            public static readonly string jquery_ui_draggable_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.draggable.min.js") ? Url("jquery.ui.draggable.min.js") : Url("jquery.ui.draggable.js");
+            public static readonly string jquery_ui_mouse_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.mouse.min.js") ? Url("jquery.ui.mouse.min.js") : Url("jquery.ui.mouse.js");
+            public static readonly string jquery_ui_resizable_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.resizable.min.js") ? Url("jquery.ui.resizable.min.js") : Url("jquery.ui.resizable.js");
+            public static readonly string jquery_ui_widget_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.widget.min.js") ? Url("jquery.ui.widget.min.js") : Url("jquery.ui.widget.js");
+        }
+    
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -297,6 +302,7 @@ namespace Links
         public static readonly string bootstrap_css_map = Url("bootstrap.css.map");
         public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
         public static readonly string bootstrap_min_css_map = Url("bootstrap.min.css.map");
+        public static readonly string ChatStyle_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ChatStyle.min.css") ? Url("ChatStyle.min.css") : Url("ChatStyle.css");
         public static readonly string defaultAvatar_png = Url("defaultAvatar.png");
         public static readonly string error404_jpg = Url("error404.jpg");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -385,6 +391,18 @@ namespace Links
     {
         public static partial class Scripts 
         {
+            public static partial class ui 
+            {
+                public static class Assets
+                {
+                    public const string jquery_ui_core_js = "~/Scripts/ui/jquery.ui.core.js"; 
+                    public const string jquery_ui_dialog_js = "~/Scripts/ui/jquery.ui.dialog.js"; 
+                    public const string jquery_ui_draggable_js = "~/Scripts/ui/jquery.ui.draggable.js"; 
+                    public const string jquery_ui_mouse_js = "~/Scripts/ui/jquery.ui.mouse.js"; 
+                    public const string jquery_ui_resizable_js = "~/Scripts/ui/jquery.ui.resizable.js"; 
+                    public const string jquery_ui_widget_js = "~/Scripts/ui/jquery.ui.widget.js"; 
+                }
+            }
             public static class Assets
             {
                 public const string _references_js = "~/Scripts/_references.js"; 
@@ -495,6 +513,7 @@ namespace Links
                 public const string bootstrap_theme_min_css = "~/Content/bootstrap-theme.min.css";
                 public const string bootstrap_css = "~/Content/bootstrap.css";
                 public const string bootstrap_min_css = "~/Content/bootstrap.min.css";
+                public const string ChatStyle_css = "~/Content/ChatStyle.css";
                 public const string footer_css = "~/Content/footer.css";
                 public const string indexForm_css = "~/Content/indexForm.css";
                 public const string jquery_validate_bootstrap_css = "~/Content/jquery.validate.bootstrap.css";

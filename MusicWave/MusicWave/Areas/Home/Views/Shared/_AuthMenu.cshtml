@@ -1,0 +1,41 @@
+﻿@using Microsoft.Ajax.Utilities
+<ul class="nav navbar-nav">
+    @if (Request.IsAuthenticated)
+    {
+        if (User.IsInRole("user"))
+        {
+            <li>@Html.ActionLink("Home", "Index", "User", new { area = "UserProfile" }, null)</li>
+        }
+        if (User.IsInRole("admin"))
+        {
+            <li>@Html.ActionLink("Home", "Index", "Admin", new { area = "AdminProfile" }, null)</li>
+        }
+    }
+    else
+    {
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    }
+    <li>@Html.ActionLink("About", "About", "Home", new { area = "Home" }, null)</li>
+    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "Home" }, null)</li>
+</ul>
+
+@if (Request.IsAuthenticated)
+{
+    <ul class="nav navbar-nav navbar-right">
+        @if (User.IsInRole("user"))
+        {
+            <li>@Html.ActionLink(User.Identity.Name, "Index", "User", new { area = "UserProfile" }, new { id = "registerLink" })</li>
+        }
+        @if (User.IsInRole("admin"))
+        {
+            <li>@Html.ActionLink(User.Identity.Name, "Index", "Admin", new { area = "AdminProfile" }, new { id = "registerLink" })</li>
+        }
+        <li>@Html.ActionLink("Log Out", "LogOut", "Account", new { area = "Account" }, new { id = "registerLink" })</li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", new { area = "Account" }, new { id = "registerLink" })</li>
+    </ul>
+}

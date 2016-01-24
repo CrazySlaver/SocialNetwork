@@ -23,7 +23,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace T4MVC.Chat
+namespace T4MVC.Home
 {
     public class SharedController
     {
@@ -38,7 +38,11 @@ namespace T4MVC.Chat
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _AuthMenu = "_AuthMenu";
+                public readonly string _Layout = "_Layout";
             }
+            public readonly string _AuthMenu = "~/Areas/Home/Views/Shared/_AuthMenu.cshtml";
+            public readonly string _Layout = "~/Areas/Home/Views/Shared/_Layout.cshtml";
         }
     }
 

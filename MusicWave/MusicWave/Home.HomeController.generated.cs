@@ -23,15 +23,15 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace MusicWave.Areas.Chat.Controllers
+namespace MusicWave.Areas.Home.Controllers
 {
-    public partial class ChatController
+    public partial class HomeController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ChatController() { }
+        public HomeController() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected ChatController(Dummy d) { }
+        protected HomeController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -61,13 +61,13 @@ namespace MusicWave.Areas.Chat.Controllers
 
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ChatController Actions { get { return MVC.Chat.Chat; } }
+        public HomeController Actions { get { return MVC.Home.Home; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "Chat";
+        public readonly string Area = "Home";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Chat";
+        public readonly string Name = "Home";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Chat";
+        public const string NameConst = "Home";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -76,15 +76,27 @@ namespace MusicWave.Areas.Chat.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string About = "About";
+            public readonly string Contact = "Contact";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string About = "About";
+            public const string Contact = "Contact";
         }
 
 
+        static readonly ActionParamsClass_Index s_params_Index = new ActionParamsClass_Index();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Index IndexParams { get { return s_params_Index; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Index
+        {
+            public readonly string model = "model";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -95,16 +107,20 @@ namespace MusicWave.Areas.Chat.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string About = "About";
+                public readonly string Contact = "Contact";
                 public readonly string Index = "Index";
             }
-            public readonly string Index = "~/Areas/Chat/Views/Chat/Index.cshtml";
+            public readonly string About = "~/Areas/Home/Views/Home/About.cshtml";
+            public readonly string Contact = "~/Areas/Home/Views/Home/Contact.cshtml";
+            public readonly string Index = "~/Areas/Home/Views/Home/Index.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_ChatController : MusicWave.Areas.Chat.Controllers.ChatController
+    public partial class T4MVC_HomeController : MusicWave.Areas.Home.Controllers.HomeController
     {
-        public T4MVC_ChatController() : base(Dummy.Instance) { }
+        public T4MVC_HomeController() : base(Dummy.Instance) { }
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -114,6 +130,40 @@ namespace MusicWave.Areas.Chat.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, MusicWave.Models.LogInUser model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Index(MusicWave.Models.LogInUser model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            IndexOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AboutOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult About()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.About);
+            AboutOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ContactOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Contact()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Contact);
+            ContactOverride(callInfo);
             return callInfo;
         }
 

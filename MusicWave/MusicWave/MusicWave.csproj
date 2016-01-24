@@ -209,21 +209,13 @@
     <Compile Include="Areas\AdminProfile\AdminProfileAreaRegistration.cs" />
     <Compile Include="Areas\AdminProfile\Controllers\AdminController.cs" />
     <Compile Include="Areas\AdminProfile\DAL\UserModel.cs" />
-    <Compile Include="Areas\Chat\ChatAreaRegistration.cs" />
+    <Compile Include="Areas\UserProfile\Models\MessageDetail.cs" />
     <Compile Include="Areas\Error\ErrorAreaRegistration.cs" />
     <Compile Include="Areas\Home\HomeAreaRegistration.cs" />
     <Compile Include="Areas\UserProfile\Filters\AccessToUserPageActionFilter.cs" />
     <Compile Include="Areas\UserProfile\UserProfileAreaRegistration.cs" />
     <Compile Include="Areas\Account\Controllers\AccountController.cs" />
-    <Compile Include="Areas\Chat\Controllers\ChatController.cs" />
-    <Compile Include="Chat.ChatController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Chat.SharedController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Areas\UserProfile\Controllers\ChatController.cs" />
     <Compile Include="Areas\Error\Controllers\ErrorController.cs" />
     <Compile Include="Areas\UserProfile\Controllers\UserController.cs" />
     <Compile Include="Areas\Home\Controllers\HomeController.cs" />
@@ -237,13 +229,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Areas\Account\Helpers\UserModelBinder.cs" />
-    <Compile Include="Areas\Chat\Hubs\SignalRChatHub.cs" />
+    <Compile Include="SignalRChatHub.cs" />
     <Compile Include="Home.HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Home.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Areas\UserProfile\Models\ChatUser.cs" />
     <Compile Include="Models\CustomUser.cs" />
     <Compile Include="Models\LogInUser.cs" />
     <Compile Include="Models\PeopleModel.Context.cs">
@@ -281,6 +274,9 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="UserProfile.ChatController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserProfile.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
       <SubType>Code</SubType>
@@ -307,6 +303,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ChatStyle.css" />
     <Content Include="Content\defaultAvatar.png" />
     <Content Include="Content\error404.jpg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -441,7 +438,6 @@
     <Content Include="Content\_bootstrap-datetimepicker.less" />
     <Content Include="Areas\Account\Views\web.config" />
     <Content Include="Areas\UserProfile\Views\web.config" />
-    <Content Include="Areas\Chat\Views\web.config" />
     <Content Include="Areas\AdminProfile\Views\web.config" />
     <Content Include="App_Code\TwitterGoodies.cshtml" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
@@ -467,6 +463,9 @@
     <Content Include="Areas\Error\Views\web.config" />
     <Content Include="Areas\Home\Views\web.config" />
     <Content Include="Areas\Home\Views\Shared\_AuthMenu.cshtml" />
+    <Content Include="Areas\UserProfile\Views\Shared\_PartialMenu.cshtml" />
+    <Content Include="Areas\UserProfile\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\UserProfile\Views\Chat\Index.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -503,6 +502,12 @@
     <Content Include="Scripts\typeahead.bundle.js" />
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\typeahead.jquery.js" />
+    <Content Include="Scripts\ui\jquery.ui.core.js" />
+    <Content Include="Scripts\ui\jquery.ui.dialog.js" />
+    <Content Include="Scripts\ui\jquery.ui.draggable.js" />
+    <Content Include="Scripts\ui\jquery.ui.mouse.js" />
+    <Content Include="Scripts\ui\jquery.ui.resizable.js" />
+    <Content Include="Scripts\ui\jquery.ui.widget.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="T4MVC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -528,7 +533,6 @@
     <None Include="T4MVC.tt.hooks.t4" />
     <None Include="Areas\Account\Views\Account\Register.cshtml" />
     <None Include="Areas\Account\Views\Account\Index.cshtml" />
-    <Content Include="Areas\Chat\Views\Chat\Index.cshtml" />
     <Content Include="Areas\UserProfile\Views\User\Index.cshtml" />
     <Content Include="Areas\Home\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Home\Views\Home\About.cshtml" />
@@ -548,12 +552,8 @@
     <Folder Include="Areas\Account\Views\Shared\" />
     <Folder Include="Areas\AdminProfile\Models\" />
     <Folder Include="Areas\AdminProfile\Views\Shared\" />
-    <Folder Include="Areas\Chat\Models\" />
-    <Folder Include="Areas\Chat\Views\Shared\" />
     <Folder Include="Areas\Error\Models\" />
     <Folder Include="Areas\Home\Models\" />
-    <Folder Include="Areas\UserProfile\Models\" />
-    <Folder Include="Areas\UserProfile\Views\Shared\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

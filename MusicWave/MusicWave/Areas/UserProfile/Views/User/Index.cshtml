@@ -1,40 +1,12 @@
-﻿
-@model MusicWave.Models.User
-
-@{
+﻿@{
     ViewBag.Title = "Home";
     Layout = "~/Areas/Home/Views/Shared/_Layout.cshtml";
 
 }
-
-
-<div class="row">
-    <div class="col-sm-6 col-md-3">
-        <div class="thumbnail">
-            <img src="data:@Model.ImageContentType;base64,@Model.ImageBase64">
-            <div class="caption">
-                <ul class="nav nav-stacked" role="tablist">
-                    <li role="presentation"><a href="#">Home</a></li>
-                    <li role="presentation"><a href="#">Singers</a></li>
-                    <li role="presentation"><a href="#">Music</a></li>
-                    <li role="presentation"><a href="#">Videos</a></li>
-                    <li role="presentation">
-
-                        <a href="@Url.Action(MVC.Chat.Chat.Index())">Messages <span class="badge">3</span></a>
-                    </li>
-                    <li role="presentation"><a href="#">Settings</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col=col-sm-6 col-md-6">
-        <div class="page-header">
-            <h1>@Model.FirstName @Model.LastName</h1>
-        </div>
-        <p>@Model.AboutUser</p>
-
-        <div>@Twitter.Search("usa", "669228317179052033")</div>
-        <div>@Twitter.FollowButton("CrazySlaver")</div>
-
-    </div>
+<div class="page-header">
+    <h1>@Model.FirstName @Model.LastName</h1>
 </div>
+<p>@Model.AboutUser</p>
+
+<div>@Twitter.Search("usa", "669228317179052033")</div>
+<div>@Twitter.FollowButton("CrazySlaver")</div>

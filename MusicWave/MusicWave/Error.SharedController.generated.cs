@@ -23,7 +23,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace T4MVC.UserProfile
+namespace T4MVC.Error
 {
     public class SharedController
     {
@@ -38,9 +38,9 @@ namespace T4MVC.UserProfile
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string _PartialMenu = "_PartialMenu";
+                public readonly string Error = "Error";
             }
-            public readonly string _PartialMenu = "~/Areas/UserProfile/Views/Shared/_PartialMenu.cshtml";
+            public readonly string Error = "~/Areas/Error/Views/Shared/Error.cshtml";
         }
     }
 

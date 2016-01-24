@@ -1,0 +1,47 @@
+﻿@*@{
+    ViewBag.Title = "Not found";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 text-center">
+            <h1>Page not found</h1>
+            <p>We can't seem to find the page you're looking for.</p>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <img src="~/Content/error404.jpg" />
+        </div>
+    </div>
+</div>*@
+@model System.Web.Mvc.HandleErrorInfo
+@{
+
+    ViewBag.Title = "Error";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="list-header clearfix">
+    <span>Error</span>
+</div>
+<div class="list-sfs-holder">
+    <div class="alert alert-error">
+        An unexpected error has occurred. Please contact the system administrator.
+    </div>
+    @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
+    {
+        <div>
+            <p>
+                <b>Exception:</b> @Model.Exception.Message<br />
+                <b>Controller:</b> @Model.ControllerName<br />
+                <b>Action:</b> @Model.ActionName
+            </p>
+            <div style="overflow:scroll">
+                <pre>
+@Model.Exception.StackTrace
+                </pre>
+            </div>
+        </div>
+    }
+</div>

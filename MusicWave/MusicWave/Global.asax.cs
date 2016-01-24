@@ -30,10 +30,9 @@ namespace MusicWave
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             
-            
-
-
             //DependencyResolver.SetResolver(new StructureMapDependencyResolver());
+
+            
         }
         #region if error
         //protected void Application_Error(object sender, EventArgs e)

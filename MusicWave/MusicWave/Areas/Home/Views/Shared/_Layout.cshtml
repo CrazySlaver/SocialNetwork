@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryvalunobtrus")
+    @Scripts.Render("~/bundles/jqueryunobtrus")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    <script src="/Scripts/jquery.validate.bootstrap.js"></script>
+    <script src="/Scripts/typeahead.jquery.js"></script>
+    <link href="~/Content/footer.css" rel="stylesheet">
+</head>
+<body>
+    <div id="wrap">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @if (Request.IsAuthenticated)
+                    {
+                        if (Roles.IsUserInRole(User.Identity.Name, "user"))
+                        {
+                            @Html.ActionLink("Music WAVE", "Index", "User", new { area = "UserProfile" }, new { @class = "navbar-brand" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Music WAVE", "Index", "Admin", new { area = "AdminProfile" }, new { @class = "navbar-brand" })
+                        }
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Music WAVE", "Index", "Home", new { area = "Home" }, new { @class = "navbar-brand" })
+                    }
+                </div>
+                <div class="navbar-collapse collapse">
+                    @Html.Partial(@"~/Areas/Home/Views/Shared/_AuthMenu.cshtml")
+                </div>
+               
+
+            </div>
+        </div>
+        <div class="container body-content">
+            <div class="row">
+                <div class="col-md-2">
+                    @if (Request.IsAuthenticated)
+                    {
+                        if (Roles.IsUserInRole(User.Identity.Name, "user"))
+                        {
+
+                            @Html.Partial(@"~/Areas/UserProfile/Views/Shared/_PartialMenu.cshtml")
+
+                        }
+                    }
+                </div>
+                <div class="col-md-10">
+                    @RenderBody()
+                </div>
+            </div>
+           
+
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <p class=" credit" style="color: #030303">Developer - Valeriy Pogorzhelskiy</p>
+        </div>
+    </div>
+</body>
+</html>

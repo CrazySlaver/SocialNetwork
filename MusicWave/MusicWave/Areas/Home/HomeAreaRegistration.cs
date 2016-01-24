@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace MusicWave.Areas.Chat
+namespace MusicWave.Areas.Home
 {
-    public class ChatAreaRegistration : AreaRegistration 
+    public class HomeAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "Chat";
+                return "Home";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Chat_default",
-                "Chat/{controller}/{action}/{id}",
+                "Home_default",
+                "Home/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }
