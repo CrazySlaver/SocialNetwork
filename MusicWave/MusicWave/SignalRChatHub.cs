@@ -6,6 +6,7 @@ using MusicWave.Areas.UserProfile.Models;
 
 namespace MusicWave
 {
+    //[Authorize]
     public class SignalRChatHub : Hub
     {
         private static List<ChatUser> _connectedUser = new List<ChatUser>();
@@ -27,7 +28,7 @@ namespace MusicWave
 
         public void SendMessageToAll(string userName, string message)
         {
-            AddMessageinCache(userName, message);
+            AddMessageinCache(userName, message);   
             Clients.All.messageReceived(userName, message);
         }
 

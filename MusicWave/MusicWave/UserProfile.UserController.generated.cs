@@ -28,9 +28,6 @@ namespace MusicWave.Areas.UserProfile.Controllers
     public partial class UserController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public UserController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected UserController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -59,6 +56,18 @@ namespace MusicWave.Areas.UserProfile.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult GetUsers()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetUsers);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult AddUserToFriend()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddUserToFriend);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public UserController Actions { get { return MVC.UserProfile.User; } }
@@ -76,15 +85,37 @@ namespace MusicWave.Areas.UserProfile.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string Friends = "Friends";
+            public readonly string GetUsers = "GetUsers";
+            public readonly string AddUserToFriend = "AddUserToFriend";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string Friends = "Friends";
+            public const string GetUsers = "GetUsers";
+            public const string AddUserToFriend = "AddUserToFriend";
         }
 
 
+        static readonly ActionParamsClass_GetUsers s_params_GetUsers = new ActionParamsClass_GetUsers();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_GetUsers GetUsersParams { get { return s_params_GetUsers; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_GetUsers
+        {
+            public readonly string name = "name";
+        }
+        static readonly ActionParamsClass_AddUserToFriend s_params_AddUserToFriend = new ActionParamsClass_AddUserToFriend();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_AddUserToFriend AddUserToFriendParams { get { return s_params_AddUserToFriend; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_AddUserToFriend
+        {
+            public readonly string friendId = "friendId";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -95,8 +126,12 @@ namespace MusicWave.Areas.UserProfile.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string Friends = "Friends";
+                public readonly string GetUsers = "GetUsers";
                 public readonly string Index = "Index";
             }
+            public readonly string Friends = "~/Areas/UserProfile/Views/User/Friends.cshtml";
+            public readonly string GetUsers = "~/Areas/UserProfile/Views/User/GetUsers.cshtml";
             public readonly string Index = "~/Areas/UserProfile/Views/User/Index.cshtml";
         }
     }
@@ -114,6 +149,41 @@ namespace MusicWave.Areas.UserProfile.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void FriendsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Friends()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Friends);
+            FriendsOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void GetUsersOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string name);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult GetUsers(string name)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetUsers);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "name", name);
+            GetUsersOverride(callInfo, name);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AddUserToFriendOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Guid friendId);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult AddUserToFriend(System.Guid friendId)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddUserToFriend);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "friendId", friendId);
+            AddUserToFriendOverride(callInfo, friendId);
             return callInfo;
         }
 

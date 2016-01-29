@@ -8,7 +8,7 @@
 <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
 <!-- Add reference to the auto-generated proxy file -->
 <script src="/signalr/hubs"></script>
-@*<link rel="stylesheet" href="/Content/ChatStyle.css" />*@
+<link rel="stylesheet" href="/Content/ChatStyle.css" />
 
 <script src="/Scripts/ui/jquery.ui.core.js"></script>
 <script src="/Scripts/ui/jquery.ui.widget.js"></script>
@@ -26,37 +26,26 @@
     });
 
 
-    function setScreen(isLogin) {
+    //function setScreen(isLogin) {
 
-        if (!isLogin) {
+    //    if (!isLogin) {
 
-            $("#divChat").hide();
-            $("#divLogin").show();
-        }
-        else {
+    //        $("#divChat").hide();
+    //        $("#divLogin").show();
+    //    }
+    //    else {
 
-            $("#divChat").show();
-            $("#divLogin").hide();
-        }
+    //        $("#divChat").show();
+    //        $("#divLogin").hide();
+    //    }
 
-    }
+    //}
 
     function registerEvents(chatHub) {
        
         var name = '@Model.FirstName';
         chatHub.server.connect(name);
-        
-        //$("#btnStartChat").click(function () {
-            
-           
-        //    if (name.length > 0) {
-        //    }
-        //    else {
-        //        alert("Please enter name");
-        //    }
-
-        //});
-
+       
 
         $('#btnSendMsg').click(function () {
 
@@ -90,7 +79,7 @@
         // Calls when user successfully logged in
         chatHub.client.onConnected = function (id, userName, allUsers, messages) {
 
-            setScreen(true);
+            //setScreen(true);
 
             $('#hdId').val(id);
             $('#hdUserName').val(userName);
@@ -174,9 +163,7 @@
 
         }
         else {
-
-            //code = $('<a id="' + id + '" class="user" >' + name + '<a>');
-            code = $(' <li class="media"><div class="media-body"><div class="media"><a class="pull-left" id="' + id + '"><img class="media-object img-circle" style="max-height: 40px;" src="/Content/defaultAvatar.png" width="30" height="30" /></a><div class="media-body"><h5>' + name + '| User </h5><small class="text-muted">Active From 3 hours</small></div></div></div');
+            code = $(' <li class="media" id="' + id + '"><div class="media-body"><div class="media"><a class="pull-left"><img class="media-object img-circle" style="max-height: 40px;" src="/Content/defaultAvatar.png" width="30" height="30" /></a><div class="media-body"><h5>' + name + '| User </h5><small class="text-muted">Active From 3 hours</small></div></div></div');
             $(code).dblclick(function () {
 
                 var id = $(this).attr('id');
@@ -193,7 +180,9 @@
 
     var date = new Date();
     function AddMessage(userName, message) {
-        $('#divChatWindow').append('<li class="media"><div class="media-body"><div class="media"><a class="pull-left" href="#"><img class="media-object img-circle " src="/Content/defaultAvatar.png" width="50" height="50" /></a><div class="media-body">'+message+'<br /><small class="text-muted">'+userName + "|"+ date+'</small><hr /></div></div></div></li>');
+        $('#divChatWindow').append('<li class="media"><div class="media-body"><div class="media">' +
+          '<a class="pull-left" href="#"><img class="media-object img-circle " src="/Content/defaultAvatar.png" width="50" height="50" />' +
+          '</a><div class="media-body">'+message+'<br /><small class="text-muted">'+userName + "|"+ date+'</small><hr /></div></div></div></li>');
 
         var height = $('#divChatWindow')[0].scrollHeight;
         $('#divChatWindow').scrollTop(height);
@@ -214,7 +203,7 @@
         var div = '<div id="' + ctrId + '" class="ui-widget-content draggable" rel="0">' +
                    '<div class="header">' +
                       '<div  style="float:right;">' +
-                          '<img id="imgDelete"  style="cursor:pointer;" src="/Images/delete.png"/>' +
+                          '<img id="imgDelete"  style="cursor:pointer;" src="/Content/delete.png"/>' +
                        '</div>' +
 
                        '<span class="selText" rel="0">' + userName + '</span>' +
@@ -278,43 +267,8 @@
     }
 
 </script>
-<br />
-<br />
-<br />
 
-<div id="divContainer">
-    @*<div id="divLogin" class="login">
-        <div>
-            Your Name:<br />
-            <input id="txtNickName" type="text" class="textBox" />
-        </div>
-        <div id="divButton">
-            <input id="btnStartChat" type="button" class="submitButton" value="Start Chat" />
-        </div>
-    </div>*@
-
-    @*<div id="divChat" class="chatRoom">
-            <div class="title">
-                Welcome to Chat Room [<span id='spanUser'></span>]
-
-            </div>
-            <div class="content">
-                <div id="divChatWindow" class="chatWindow">
-                </div>
-                <div id="divusers" class="users">
-                </div>
-            </div>
-            <div class="messageBar">
-                <input class="textbox" type="text" id="txtMessage" />
-                <input id="btnSendMsg" type="button" value="Send" class="submitButton" />
-            </div>
-        </div>
-
-        <input id="hdId" type="hidden" />
-        <input id="hdUserName" type="hidden" />*@
-</div>
-
-
+<br/>
 <div class="col-md-8">
     <div class="panel panel-info">
         <div class="panel-heading">

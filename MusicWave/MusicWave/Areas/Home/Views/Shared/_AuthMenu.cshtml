@@ -17,7 +17,48 @@
     }
     <li>@Html.ActionLink("About", "About", "Home", new { area = "Home" }, null)</li>
     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "Home" }, null)</li>
+
+    @if (Request.IsAuthenticated)
+    {
+        if (User.IsInRole("user"))
+        {
+            using (Ajax.BeginForm(MVC.UserProfile.User.GetUsers(), new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "form-container" }, new { @class = "navbar-form navbar-left", role = "search" }))
+            {
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" id="name" name="name">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            }
+            @*<form class="navbar-form navbar-left" role="search" id="searchform">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>*@
+
+        }
+    }
 </ul>
+@*<script>
+        $('#searchform').submit(function(e) {
+            $.ajax({
+                url: @MVC.UserProfile.User.GetUsers(),
+                type: 'POST',
+                data: $('#searchVal').val()
+            }).done(function(result) {
+                $('#container').html(result);
+            });
+            e.preventExtensions();
+        })
+    </script>*@
 
 @if (Request.IsAuthenticated)
 {

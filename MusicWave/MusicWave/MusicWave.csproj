@@ -303,8 +303,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Buttons\add.png" />
+    <Content Include="Content\Buttons\delete.png" />
+    <Content Include="Content\Buttons\message.png" />
     <Content Include="Content\ChatStyle.css" />
     <Content Include="Content\defaultAvatar.png" />
+    <Content Include="Content\delete.png" />
     <Content Include="Content\error404.jpg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\footer.css" />
@@ -466,6 +470,8 @@
     <Content Include="Areas\UserProfile\Views\Shared\_PartialMenu.cshtml" />
     <Content Include="Areas\UserProfile\Views\_ViewStart.cshtml" />
     <Content Include="Areas\UserProfile\Views\Chat\Index.cshtml" />
+    <None Include="Areas\UserProfile\Views\User\Friends.cshtml" />
+    <Content Include="Areas\UserProfile\Views\User\GetUsers.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />

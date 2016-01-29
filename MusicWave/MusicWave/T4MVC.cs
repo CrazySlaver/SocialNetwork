@@ -302,8 +302,19 @@ namespace Links
         public static readonly string bootstrap_css_map = Url("bootstrap.css.map");
         public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
         public static readonly string bootstrap_min_css_map = Url("bootstrap.min.css.map");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class Buttons {
+            private const string URLPATH = "~/Content/Buttons";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string add_png = Url("add.png");
+            public static readonly string delete_png = Url("delete.png");
+            public static readonly string message_png = Url("message.png");
+        }
+    
         public static readonly string ChatStyle_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ChatStyle.min.css") ? Url("ChatStyle.min.css") : Url("ChatStyle.css");
         public static readonly string defaultAvatar_png = Url("defaultAvatar.png");
+        public static readonly string delete_png = Url("delete.png");
         public static readonly string error404_jpg = Url("error404.jpg");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class fonts {
@@ -457,6 +468,12 @@ namespace Links
                     {
                     }
                 }
+                public static class Assets
+                {
+                }
+            }
+            public static partial class Buttons 
+            {
                 public static class Assets
                 {
                 }

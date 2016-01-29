@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
@@ -99,6 +100,31 @@ namespace MusicWave.Areas.Account.AccessToDB
                 flag = true;
             }
             return flag;
+        }
+
+        //public IEquatable<CustomUser> GetAllFriends()
+        //{
+            
+        //}
+
+        //TODO life dropdown list
+        public IEnumerable<User> GetSeekingUser(string name)
+        {
+            IEnumerable<User> usersList;
+            
+            using (var entity = new PeopleDBEntities())
+            {
+                usersList = (from users in entity.User
+                            where (users.FirstName + users.LastName).Contains(name)
+                            select users).ToList();
+                
+            }
+            return usersList;
+        }
+
+        public bool AddUserToFriend()
+        {
+            
         }
     }
 }

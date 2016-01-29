@@ -23,8 +23,7 @@ namespace MusicWave
 
             ObjectFactory.Initialize(cfg =>
             {
-                cfg.For<IUserDb>()
-                    .Use<UserDb>();
+                cfg.For<IUserDb>().Use<UserDb>();
             });
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
             AreaRegistration.RegisterAllAreas();

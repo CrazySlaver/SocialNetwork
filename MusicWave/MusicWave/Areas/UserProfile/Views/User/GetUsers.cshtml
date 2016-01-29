@@ -1,0 +1,37 @@
+﻿@model IEnumerable<MusicWave.Models.User>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = Layout = Request.IsAjaxRequest() ? null : "~/Areas/Home/Views/Shared/_Layout.cshtml";
+}
+<style>
+    img.btn-add {
+        margin-top: 34px;
+    }
+</style>
+
+<div class="col-md-6">
+    <h3>Search result</h3>
+    @foreach (var item in Model)
+    {
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" src="data:@item.ImageContentType;base64,@item.ImageBase64" width="100" height="100">
+                </a>
+            </div>
+
+            <div class="media-body">
+                <h4 class="media-heading">@item.FirstName @item.LastName</h4>
+                <p>@item.AboutUser</p>
+                <small class="text-muted">Live in @item.City</small>
+
+            </div>
+            <div class="media-right">
+                <a href="@Url.Action(MVC.UserProfile.User.AddUserToFriend(item.Id))">
+                    <img class="media-object  btn-add" src="~/Content/Buttons/Add.png" width="32" height="32" />
+                </a>
+            </div>
+        </div>
+    }
+</div>

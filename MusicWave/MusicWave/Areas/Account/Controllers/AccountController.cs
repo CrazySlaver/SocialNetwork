@@ -28,6 +28,7 @@ namespace MusicWave.Areas.Account.Controllers
             return View();
         }
 
+        //TODO после введения неправильных данных прикрипленная картинка теряется
         [HttpPost, CaptchaValidator]
         //[CustomActionFilter]
         public virtual ActionResult Register(HttpPostedFileBase file, [ModelBinder(typeof(UserModelBinder))] CustomUser model, bool? captchaValid, string captchaErrorMessage)

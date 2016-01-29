@@ -46,30 +46,32 @@
                 <div class="navbar-collapse collapse">
                     @Html.Partial(@"~/Areas/Home/Views/Shared/_AuthMenu.cshtml")
                 </div>
-               
+
 
             </div>
         </div>
-        <div class="container body-content">
-            <div class="row">
-                <div class="col-md-2">
-                    @if (Request.IsAuthenticated)
-                    {
-                        if (Roles.IsUserInRole(User.Identity.Name, "user"))
+        @if (Request.IsAuthenticated)
+        {
+            <div class="container body-content">
+                <div class="row">
+                    <div class="col-md-2">
+                        @if (Roles.IsUserInRole(User.Identity.Name, "user"))
                         {
-
                             @Html.Partial(@"~/Areas/UserProfile/Views/Shared/_PartialMenu.cshtml")
-
                         }
-                    }
-                </div>
-                <div class="col-md-10">
-                    @RenderBody()
+                    </div>
+                    <div class="col-md-10">
+                        <div id="form-container">
+                            @RenderBody()
+                            </div>
+                        </div>
                 </div>
             </div>
-           
-
-        </div>
+        }
+        else
+        {
+            @RenderBody()
+        }
     </div>
     <div id="footer">
         <div class="container">
