@@ -28,9 +28,10 @@
 
             </div>
             <div class="media-right" id="@item.Id">
-                @Html.Raw(Ajax.ActionLink("[replacetext]", MVC.UserProfile.User.AddUserToFriend(item.Id), new AjaxOptions { UpdateTargetId = @item.Id.ToString(), InsertionMode = InsertionMode.Replace }, null).ToHtmlString().Replace("[replacetext]", "<img class=\"media-object  btn-add\" src=\"/Content/Buttons/Add.png\" width=\"32\" height=\"32\"/>"))
+                @Html.Raw(Ajax.ActionLink("[replacetext]", MVC.UserProfile.User.AddUserToFriend(item.Id), new AjaxOptions {UpdateTargetId = @item.Id.ToString(), InsertionMode = InsertionMode.Replace}, null).ToHtmlString().Replace("[replacetext]", "<img class=\"media-object  btn-add\" src=\"/Content/Buttons/Add.png\" width=\"32\" height=\"32\"/>"))
 
             </div>
         </div>
+        <hr/>
     }
 </div>

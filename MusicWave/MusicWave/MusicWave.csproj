@@ -476,6 +476,7 @@
     <Content Include="Areas\UserProfile\Views\Chat\Index.cshtml" />
     <Content Include="Areas\UserProfile\Views\Shared\_OkButton.cshtml" />
     <Content Include="Areas\UserProfile\Views\Shared\_MessageBox.cshtml" />
+    <Content Include="Areas\UserProfile\Views\Shared\_Notification.cshtml" />
     <None Include="Areas\UserProfile\Views\User\Friends.cshtml" />
     <Content Include="Areas\UserProfile\Views\User\GetUsers.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />

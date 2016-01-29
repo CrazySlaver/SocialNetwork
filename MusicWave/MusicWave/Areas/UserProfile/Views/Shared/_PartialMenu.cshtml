@@ -1,15 +1,17 @@
-﻿<div class="thumbnail">
-    <img src="data:@Model.ImageContentType;base64,@Model.ImageBase64">
-    <div class="caption">
-        <ul class="nav nav-stacked" role="tablist">
-            <li role="presentation"><a href="@Url.Action(MVC.UserProfile.User.Friends())">My band</a></li>
-            <li role="presentation"><a href="#">Singers</a></li>
-            <li role="presentation"><a href="#">Music</a></li>
-            <li role="presentation"><a href="#">Videos</a></li>
-            <li role="presentation">
-                <a href="@Url.Action(MVC.UserProfile.Chat.Index())">Messages <span class="badge">3</span></a>
-            </li>
-            <li role="presentation"><a href="#">Settings</a></li>
-        </ul>
-    </div>
+﻿<div class="list-group">
+    <a href="#" class="list-group-item thumbnail">
+        <img src="data:@Model.ImageContentType;base64,@Model.ImageBase64">
+    </a>
+    <a href="@Url.Action(MVC.UserProfile.User.Friends())" class="list-group-item"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> My band</a>
+    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Singers</a>
+    <a href="#" class="list-group-item"><span class="glyphicon glyphicon glyphicon-music" aria-hidden="true"></span> Music</a>
+    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Videos</a>
+    @Html.Raw(Ajax.ActionLink("[replacetext]", MVC.UserProfile.Chat.Index(), new AjaxOptions { UpdateTargetId = "form-container", InsertionMode = InsertionMode.Replace }, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", "<span class=\"glyphicon glyphicon-envelope\" aria-hidden=\"true\"></span> Messages <span class=\"badge\">3</span>"))
+    @Html.Raw(Ajax.ActionLink("[replacetext]", MVC.UserProfile.User.Notification(), new AjaxOptions { UpdateTargetId = "form-container", InsertionMode = InsertionMode.Replace }, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", "<span class=\"glyphicon glyphicon-bell\" aria-hidden=\"true\"></span> Notification <span class=\"badge\">1</span>"))
 </div>
+
+<style>
+    a.list-group-item.thumbnail {
+        padding: 0px;
+    }
+</style>

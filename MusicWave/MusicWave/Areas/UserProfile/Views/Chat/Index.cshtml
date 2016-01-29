@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Conversation";
-    Layout = "~/Areas/Home/Views/Shared/_Layout.cshtml";
+    Layout = Request.IsAjaxRequest() ? null : "~/Areas/Home/Views/Shared/_Layout.cshtml";
 }
 
 <!--Add reference to the JQuery file-->

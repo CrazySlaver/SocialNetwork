@@ -88,6 +88,7 @@ namespace MusicWave.Areas.UserProfile.Controllers
             public readonly string Friends = "Friends";
             public readonly string GetUsers = "GetUsers";
             public readonly string AddUserToFriend = "AddUserToFriend";
+            public readonly string Notification = "Notification";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -97,6 +98,7 @@ namespace MusicWave.Areas.UserProfile.Controllers
             public const string Friends = "Friends";
             public const string GetUsers = "GetUsers";
             public const string AddUserToFriend = "AddUserToFriend";
+            public const string Notification = "Notification";
         }
 
 
@@ -184,6 +186,17 @@ namespace MusicWave.Areas.UserProfile.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddUserToFriend);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "friendId", friendId);
             AddUserToFriendOverride(callInfo, friendId);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void NotificationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Notification()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Notification);
+            NotificationOverride(callInfo);
             return callInfo;
         }
 

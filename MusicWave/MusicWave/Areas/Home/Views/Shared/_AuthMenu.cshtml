@@ -33,33 +33,9 @@
                     </span>
                 </div>
             }
-            @*<form class="navbar-form navbar-left" role="search" id="searchform">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="submit">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </span>
-                    </div>
-                </form>*@
-
         }
     }
 </ul>
-@*<script>
-        $('#searchform').submit(function(e) {
-            $.ajax({
-                url: @MVC.UserProfile.User.GetUsers(),
-                type: 'POST',
-                data: $('#searchVal').val()
-            }).done(function(result) {
-                $('#container').html(result);
-            });
-            e.preventExtensions();
-        })
-    </script>*@
-
 @if (Request.IsAuthenticated)
 {
     <ul class="nav navbar-nav navbar-right">

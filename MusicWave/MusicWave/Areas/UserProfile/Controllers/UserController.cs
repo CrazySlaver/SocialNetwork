@@ -62,5 +62,11 @@ namespace MusicWave.Areas.UserProfile.Controllers
             }
             return RedirectToAction(MVC.UserProfile.User.Index());
         }
+
+
+        public virtual ActionResult Notification()
+        {
+            return PartialView("_Notification");
+        }
     }
 }
