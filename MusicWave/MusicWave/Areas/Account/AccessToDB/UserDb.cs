@@ -11,7 +11,7 @@ namespace MusicWave.Areas.Account.AccessToDB
     public class UserDb : IUserDb
     {
         //TODO коректные сообщения обшибки (Error Class) возможно реализовать ErrorFilter
-        
+
         public bool CheckGender(string gender)
         {
             bool result = gender == "Male";
@@ -104,27 +104,75 @@ namespace MusicWave.Areas.Account.AccessToDB
 
         //public IEquatable<CustomUser> GetAllFriends()
         //{
-            
+
         //}
 
         //TODO life dropdown list
         public IEnumerable<User> GetSeekingUser(string name)
         {
             IEnumerable<User> usersList;
-            
+
             using (var entity = new PeopleDBEntities())
             {
                 usersList = (from users in entity.User
-                            where (users.FirstName + users.LastName).Contains(name)
-                            select users).ToList();
-                
+                             where (users.FirstName + users.LastName).Contains(name)
+                             select users).ToList();
+
             }
             return usersList;
         }
 
-        public bool AddUserToFriend()
+        public bool AddUserToFriend(Guid userId, Guid friendId)
         {
-            
+            bool result = false;
+            using (var db = new PeopleDBEntities())
+            {
+
+                var check = (from friend in db.FriendRelationship
+                            .Where(f => (f.FriendId == friendId && f.UserId == userId) || (f.FriendId == userId && f.UserId == friendId))
+                            select friend).ToList();
+                if (check.Count == 0)
+                {
+                    var entity1 = new FriendRelationship
+                    {
+                        Id = Guid.NewGuid(),
+                        FriendId = friendId,
+                        UserId = userId,
+                        status = false
+                    };
+                    var entity2 = new FriendRelationship
+                    {
+                        Id = Guid.NewGuid(),
+                        FriendId = userId,
+                        UserId = friendId,
+                        status = false
+                    };
+                    try
+                    {
+
+                        db.FriendRelationship.Add(entity1);
+                        db.FriendRelationship.Add(entity2);
+                        db.SaveChanges();
+                        result = true;
+                    }
+                    catch (DbEntityValidationException e)
+                    {
+                        foreach (var eve in e.EntityValidationErrors)
+                        {
+                            Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                                eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                            foreach (var ve in eve.ValidationErrors)
+                            {
+                                Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                    ve.PropertyName, ve.ErrorMessage);
+                            }
+                        }
+                        throw;
+                    }
+                }
+
+            }
+            return result;
         }
     }
 }

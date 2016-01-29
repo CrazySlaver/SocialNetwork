@@ -48,7 +48,18 @@ namespace MusicWave.Areas.UserProfile.Controllers
         public virtual ActionResult AddUserToFriend(Guid friendId)
         {
             var currentUser = (User)TempData["user"];
-
+            if (friendId != null)
+            {
+                bool flag = _userDb.AddUserToFriend(currentUser.Id, friendId);
+                if (flag)
+                {
+                    return PartialView("_OkButton");
+                }
+                else
+                {
+                    return PartialView("_MessageBox");
+                }
+            }
             return RedirectToAction(MVC.UserProfile.User.Index());
         }
     }

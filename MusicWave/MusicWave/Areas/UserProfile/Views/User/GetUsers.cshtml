@@ -27,10 +27,9 @@
                 <small class="text-muted">Live in @item.City</small>
 
             </div>
-            <div class="media-right">
-                <a href="@Url.Action(MVC.UserProfile.User.AddUserToFriend(item.Id))">
-                    <img class="media-object  btn-add" src="~/Content/Buttons/Add.png" width="32" height="32" />
-                </a>
+            <div class="media-right" id="@item.Id">
+                @Html.Raw(Ajax.ActionLink("[replacetext]", MVC.UserProfile.User.AddUserToFriend(item.Id), new AjaxOptions { UpdateTargetId = @item.Id.ToString(), InsertionMode = InsertionMode.Replace }, null).ToHtmlString().Replace("[replacetext]", "<img class=\"media-object  btn-add\" src=\"/Content/Buttons/Add.png\" width=\"32\" height=\"32\"/>"))
+
             </div>
         </div>
     }

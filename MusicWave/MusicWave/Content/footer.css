@@ -25,10 +25,10 @@ body {
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 
-.container {
+.authenticated-style {
   width: auto;
   padding: 0 15px;
 }
-.container .credit {
-  margin: 20px 0;
+.credit {
+    padding-top: 20px;
 }

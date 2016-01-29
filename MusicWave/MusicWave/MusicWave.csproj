@@ -229,6 +229,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Areas\Account\Helpers\UserModelBinder.cs" />
+    <Compile Include="Models\FriendRelationship.cs">
+      <DependentUpon>PeopleModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SignalRChatHub.cs" />
     <Compile Include="Home.HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -347,6 +350,7 @@
     <Content Include="Content\themes\base\jquery.ui.slider.css" />
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\Buttons\tick.png" />
     <Content Include="Content\typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -470,6 +474,8 @@
     <Content Include="Areas\UserProfile\Views\Shared\_PartialMenu.cshtml" />
     <Content Include="Areas\UserProfile\Views\_ViewStart.cshtml" />
     <Content Include="Areas\UserProfile\Views\Chat\Index.cshtml" />
+    <Content Include="Areas\UserProfile\Views\Shared\_OkButton.cshtml" />
+    <Content Include="Areas\UserProfile\Views\Shared\_MessageBox.cshtml" />
     <None Include="Areas\UserProfile\Views\User\Friends.cshtml" />
     <Content Include="Areas\UserProfile\Views\User\GetUsers.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />

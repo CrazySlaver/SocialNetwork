@@ -310,6 +310,7 @@ namespace Links
             public static readonly string add_png = Url("add.png");
             public static readonly string delete_png = Url("delete.png");
             public static readonly string message_png = Url("message.png");
+            public static readonly string tick_png = Url("tick.png");
         }
     
         public static readonly string ChatStyle_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ChatStyle.min.css") ? Url("ChatStyle.min.css") : Url("ChatStyle.css");
