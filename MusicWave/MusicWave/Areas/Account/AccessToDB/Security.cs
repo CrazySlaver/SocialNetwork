@@ -9,7 +9,7 @@ namespace MusicWave.Areas.Account.AccessToDB
     {
         public static User CheckPasswordAndRole(string email, string password)
         {
-            User user = null;
+            User user;
             using (var db = new PeopleDBEntities())
             {
                 try
@@ -21,6 +21,10 @@ namespace MusicWave.Areas.Account.AccessToDB
                         if (user.Password == tempPassword)
                         {
                             return user;
+                        }
+                        else
+                        {
+                            user = null;
                         }
                     }
                 }

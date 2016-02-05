@@ -68,6 +68,18 @@ namespace MusicWave.Areas.UserProfile.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddUserToFriend);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult AcceptFriendship()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AcceptFriendship);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult RejectFriendship()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RejectFriendship);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public UserController Actions { get { return MVC.UserProfile.User; } }
@@ -88,7 +100,9 @@ namespace MusicWave.Areas.UserProfile.Controllers
             public readonly string Friends = "Friends";
             public readonly string GetUsers = "GetUsers";
             public readonly string AddUserToFriend = "AddUserToFriend";
-            public readonly string Notification = "Notification";
+            public readonly string GetNotification = "GetNotification";
+            public readonly string AcceptFriendship = "AcceptFriendship";
+            public readonly string RejectFriendship = "RejectFriendship";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -98,7 +112,9 @@ namespace MusicWave.Areas.UserProfile.Controllers
             public const string Friends = "Friends";
             public const string GetUsers = "GetUsers";
             public const string AddUserToFriend = "AddUserToFriend";
-            public const string Notification = "Notification";
+            public const string GetNotification = "GetNotification";
+            public const string AcceptFriendship = "AcceptFriendship";
+            public const string RejectFriendship = "RejectFriendship";
         }
 
 
@@ -115,6 +131,22 @@ namespace MusicWave.Areas.UserProfile.Controllers
         public ActionParamsClass_AddUserToFriend AddUserToFriendParams { get { return s_params_AddUserToFriend; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_AddUserToFriend
+        {
+            public readonly string friendId = "friendId";
+        }
+        static readonly ActionParamsClass_AcceptFriendship s_params_AcceptFriendship = new ActionParamsClass_AcceptFriendship();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_AcceptFriendship AcceptFriendshipParams { get { return s_params_AcceptFriendship; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_AcceptFriendship
+        {
+            public readonly string friendId = "friendId";
+        }
+        static readonly ActionParamsClass_RejectFriendship s_params_RejectFriendship = new ActionParamsClass_RejectFriendship();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_RejectFriendship RejectFriendshipParams { get { return s_params_RejectFriendship; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_RejectFriendship
         {
             public readonly string friendId = "friendId";
         }
@@ -190,13 +222,37 @@ namespace MusicWave.Areas.UserProfile.Controllers
         }
 
         [NonAction]
-        partial void NotificationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void GetNotificationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Notification()
+        public override System.Web.Mvc.ActionResult GetNotification()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Notification);
-            NotificationOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetNotification);
+            GetNotificationOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AcceptFriendshipOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Guid friendId);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult AcceptFriendship(System.Guid friendId)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AcceptFriendship);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "friendId", friendId);
+            AcceptFriendshipOverride(callInfo, friendId);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void RejectFriendshipOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Guid friendId);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult RejectFriendship(System.Guid friendId)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RejectFriendship);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "friendId", friendId);
+            RejectFriendshipOverride(callInfo, friendId);
             return callInfo;
         }
 

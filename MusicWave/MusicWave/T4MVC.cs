@@ -307,10 +307,12 @@ namespace Links
             private const string URLPATH = "~/Content/Buttons";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-            public static readonly string add_png = Url("add.png");
-            public static readonly string delete_png = Url("delete.png");
-            public static readonly string message_png = Url("message.png");
-            public static readonly string tick_png = Url("tick.png");
+            public static readonly string add_svg = Url("add.svg");
+            public static readonly string delete_svg = Url("delete.svg");
+            public static readonly string message_svg = Url("message.svg");
+            public static readonly string music_svg = Url("music.svg");
+            public static readonly string ok_svg = Url("ok.svg");
+            public static readonly string trash_svg = Url("trash.svg");
         }
     
         public static readonly string ChatStyle_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ChatStyle.min.css") ? Url("ChatStyle.min.css") : Url("ChatStyle.css");

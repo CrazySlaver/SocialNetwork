@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MusicWave.Models.User>
+
+@{
+    ViewBag.Title = "Notification";
+    Layout = Layout = Request.IsAjaxRequest() ? null : "~/Areas/Home/Views/Shared/_Layout.cshtml";
+}
+<style>
+    img.btn-trash {
+        margin-top: 26px;
+    }
+</style>
+
+<div class="col-md-6">
+    <h3>Notifications</h3>
+    @foreach (var item in Model)
+    {
+        <div class="media" id="@item.Id">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" src="data:@item.ImageContentType;base64,@item.ImageBase64" width="100" height="100">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">User @item.FirstName @item.LastName whats to add you to friends.</h4>
+                <p>@item.AboutUser</p>
+                <small class="text-muted">Live in @item.City</small>
+            </div>
+            <div class="media-right">
+                <a data-ajax="true"
+                   data-ajax-method="GET"
+                   data-ajax-mode="replace"
+                   data-ajax-success="hideNotify('@item.Id')"
+                   href="@Url.Action(MVC.UserProfile.User.AcceptFriendship(item.Id))">
+                   <img class="media-object" src="/Content/Buttons/add.svg" width="32" height="32" />
+                </a>
+                @Html.Raw(Ajax.ActionLink("[replacetext]", MVC.UserProfile.User.RejectFriendship(item.Id), new AjaxOptions { OnSuccess = "hideNotify(" + @item.Id + ")" }, null).ToHtmlString().Replace("[replacetext]", "<img class=\"media-object  btn-trash\" src=\"/Content/Buttons/trash.svg\" width=\"32\" height=\"32\"/>"))
+            </div>
+        </div>
+        <hr />
+    }
+</div>
+<script>
+    function hideNotify(id) {
+        $('#' + id).hide();
+    };
+</script>

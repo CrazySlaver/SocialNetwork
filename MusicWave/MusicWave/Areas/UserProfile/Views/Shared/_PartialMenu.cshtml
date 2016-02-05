@@ -2,16 +2,32 @@
     <a href="#" class="list-group-item thumbnail">
         <img src="data:@Model.ImageContentType;base64,@Model.ImageBase64">
     </a>
-    <a href="@Url.Action(MVC.UserProfile.User.Friends())" class="list-group-item"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> My band</a>
+    <a href="@Url.Action(MVC.UserProfile.User.Friends())" class="list-group-item"><span class="glyphicon glyphicon-star-empty purple" aria-hidden="true"></span> My band</a>
     <a href="#" class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Singers</a>
-    <a href="#" class="list-group-item"><span class="glyphicon glyphicon glyphicon-music" aria-hidden="true"></span> Music</a>
-    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Videos</a>
-    @Html.Raw(Ajax.ActionLink("[replacetext]", MVC.UserProfile.Chat.Index(), new AjaxOptions { UpdateTargetId = "form-container", InsertionMode = InsertionMode.Replace }, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", "<span class=\"glyphicon glyphicon-envelope\" aria-hidden=\"true\"></span> Messages <span class=\"badge\">3</span>"))
-    @Html.Raw(Ajax.ActionLink("[replacetext]", MVC.UserProfile.User.Notification(), new AjaxOptions { UpdateTargetId = "form-container", InsertionMode = InsertionMode.Replace }, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", "<span class=\"glyphicon glyphicon-bell\" aria-hidden=\"true\"></span> Notification <span class=\"badge\">1</span>"))
+    <a href="#" class="list-group-item"><span class="glyphicon glyphicon glyphicon-music red" aria-hidden="true"></span> Music</a>
+    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-facetime-video light-blue" aria-hidden="true"></span> Videos</a>
+    @Html.Raw(Ajax.ActionLink("[replacetext]", MVC.UserProfile.Chat.Index(), new AjaxOptions { UpdateTargetId = "form-container", InsertionMode = InsertionMode.Replace }, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", "<span class=\"glyphicon glyphicon-envelope blue\" aria-hidden=\"true\"></span> Messages <span class=\"badge\">3</span>"))
+    @Html.Raw(Ajax.ActionLink("[replacetext]", MVC.UserProfile.User.GetNotification(), new AjaxOptions { UpdateTargetId = "form-container", InsertionMode = InsertionMode.Replace }, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", "<span class=\"glyphicon glyphicon-bell yellow\" aria-hidden=\"true\"></span> Notifications <span class=\"badge\">1</span>"))
 </div>
 
 <style>
     a.list-group-item.thumbnail {
         padding: 0px;
+    }
+    .red {
+    color: #ff1a8d;
+
+    }
+    .blue {
+        color: #00b300;
+    }
+    .yellow {
+        color: #ffd11a;
+    }
+    .light-blue {
+        color: #80bfff;
+    }
+    .purple {
+        color: purple;
     }
 </style>

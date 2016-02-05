@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,6 +42,10 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.168\lib\net45\EntityFramework.Extended.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -209,10 +214,13 @@
     <Compile Include="Areas\AdminProfile\AdminProfileAreaRegistration.cs" />
     <Compile Include="Areas\AdminProfile\Controllers\AdminController.cs" />
     <Compile Include="Areas\AdminProfile\DAL\UserModel.cs" />
+    <Compile Include="Areas\UserProfile\DAL\DbInfo.cs" />
+    <Compile Include="Areas\UserProfile\DAL\IDbInfo.cs" />
     <Compile Include="Areas\UserProfile\Models\MessageDetail.cs" />
     <Compile Include="Areas\Error\ErrorAreaRegistration.cs" />
     <Compile Include="Areas\Home\HomeAreaRegistration.cs" />
     <Compile Include="Areas\UserProfile\Filters\AccessToUserPageActionFilter.cs" />
+    <Compile Include="Areas\UserProfile\Models\Notification.cs" />
     <Compile Include="Areas\UserProfile\UserProfileAreaRegistration.cs" />
     <Compile Include="Areas\Account\Controllers\AccountController.cs" />
     <Compile Include="Areas\UserProfile\Controllers\ChatController.cs" />
@@ -290,7 +298,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\Twitter.cshtml" />
     <Content Include="App_Data\PeopleDB.mdf" />
     <Content Include="App_Data\PeopleDB_log.ldf">
       <DependentUpon>PeopleDB.mdf</DependentUpon>
@@ -306,9 +313,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Buttons\add.png" />
-    <Content Include="Content\Buttons\delete.png" />
-    <Content Include="Content\Buttons\message.png" />
+    <Content Include="Content\Buttons\add.svg" />
+    <Content Include="Content\Buttons\delete.svg" />
+    <Content Include="Content\Buttons\message.svg" />
+    <Content Include="Content\Buttons\music.svg" />
+    <Content Include="Content\Buttons\ok.svg" />
     <Content Include="Content\ChatStyle.css" />
     <Content Include="Content\defaultAvatar.png" />
     <Content Include="Content\delete.png" />
@@ -350,7 +359,7 @@
     <Content Include="Content\themes\base\jquery.ui.slider.css" />
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
-    <Content Include="Content\Buttons\tick.png" />
+    <Content Include="Content\Buttons\trash.svg" />
     <Content Include="Content\typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -447,7 +456,6 @@
     <Content Include="Areas\Account\Views\web.config" />
     <Content Include="Areas\UserProfile\Views\web.config" />
     <Content Include="Areas\AdminProfile\Views\web.config" />
-    <Content Include="App_Code\TwitterGoodies.cshtml" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <EntityDeploy Include="Models\PeopleModel.edmx">
@@ -474,7 +482,6 @@
     <Content Include="Areas\UserProfile\Views\Shared\_PartialMenu.cshtml" />
     <Content Include="Areas\UserProfile\Views\_ViewStart.cshtml" />
     <Content Include="Areas\UserProfile\Views\Chat\Index.cshtml" />
-    <Content Include="Areas\UserProfile\Views\Shared\_OkButton.cshtml" />
     <Content Include="Areas\UserProfile\Views\Shared\_MessageBox.cshtml" />
     <Content Include="Areas\UserProfile\Views\Shared\_Notification.cshtml" />
     <None Include="Areas\UserProfile\Views\User\Friends.cshtml" />
@@ -561,6 +568,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="Areas\Account\Models\" />
     <Folder Include="Areas\Account\Views\Shared\" />
     <Folder Include="Areas\AdminProfile\Models\" />

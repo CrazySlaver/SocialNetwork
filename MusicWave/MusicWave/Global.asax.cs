@@ -5,6 +5,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using MusicWave.Areas.Account.AccessToDB;
 using MusicWave.Areas.Account.Helpers;
+using MusicWave.Areas.UserProfile.DAL;
 using StructureMap;
 using MusicWave.Models;
 
@@ -24,6 +25,7 @@ namespace MusicWave
             ObjectFactory.Initialize(cfg =>
             {
                 cfg.For<IUserDb>().Use<UserDb>();
+                cfg.For<IDbInfo>().Use<DbInfo>();
             });
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
             AreaRegistration.RegisterAllAreas();
