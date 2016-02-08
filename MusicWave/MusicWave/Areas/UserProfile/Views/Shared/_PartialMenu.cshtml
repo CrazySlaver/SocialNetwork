@@ -2,7 +2,8 @@
     <a href="#" class="list-group-item thumbnail">
         <img src="data:@Model.ImageContentType;base64,@Model.ImageBase64">
     </a>
-    <a href="@Url.Action(MVC.UserProfile.User.Friends())" class="list-group-item"><span class="glyphicon glyphicon-star-empty purple" aria-hidden="true"></span> My band</a>
+    @Html.Raw(Ajax.ActionLink("[replacetext]", MVC.UserProfile.User.Friends(), new AjaxOptions { UpdateTargetId = "form-container", InsertionMode = InsertionMode.Replace }, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", "<span class=\"glyphicon glyphicon-star-empty purple\" aria-hidden=\"true\"></span> My band"))
+
     <a href="#" class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Singers</a>
     <a href="#" class="list-group-item"><span class="glyphicon glyphicon glyphicon-music red" aria-hidden="true"></span> Music</a>
     <a href="#" class="list-group-item"><span class="glyphicon glyphicon-facetime-video light-blue" aria-hidden="true"></span> Videos</a>

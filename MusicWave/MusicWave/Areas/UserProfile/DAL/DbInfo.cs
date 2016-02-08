@@ -47,6 +47,20 @@ namespace MusicWave.Areas.UserProfile.DAL
                 db.SaveChanges();
             }
         }
+
+        public IEnumerable<User> GetFriends(Guid userId)
+        {
+            IEnumerable<User> friends = null;
+            using (var db = new PeopleDBEntities())
+            {
+                var friendList = (from f in db.FriendRelationship
+                            where f.UserId == userId && f.status == true
+                            join u in db.User on f.FriendId equals u.Id
+                            select u).ToList();
+                friends = friendList;
+            }
+            return friends;
+        } 
     }
 }
 

@@ -1,6 +1,8 @@
-﻿@{
+﻿@model IEnumerable<MusicWave.Models.User>
+
+@{
     ViewBag.Title = "My band";
-    Layout = "~/Areas/Home/Views/Shared/_Layout.cshtml";
+    Layout = Layout = Request.IsAjaxRequest() ? null : "~/Areas/Home/Views/Shared/_Layout.cshtml";
 }
 
 <!-- Add reference to the minified version of the SignarR client library -->
@@ -8,89 +10,89 @@
 <!-- Add reference to the auto-generated proxy file -->
 <script src="/signalr/hubs"></script>
 
-<script type="text/javascript">
-    var chatHub = $.connection.signalRChatHub;
+@*<script type="text/javascript">
+        var chatHub = $.connection.signalRChatHub;
 
-    registerClientMethods(chatHub);
+        registerClientMethods(chatHub);
 
-    $.connection.hub.start().done(function () {
-        registerEvents(chatHub);
-    });
+        $.connection.hub.start().done(function () {
+            registerEvents(chatHub);
+        });
 
-    function registerEvents(chatHub) {
+        function registerEvents(chatHub) {
 
-        var name = '@Model.FirstName' + ' ' + '@Model.LastName';
-        chatHub.server.connect(name);
+            var name = '@Model.FirstName' + ' ' + '@Model.LastName';
+            chatHub.server.connect(name);
 
-    }
+        }
 
-    function registerClientMethods(chatHub) {
+        function registerClientMethods(chatHub) {
 
-        // Calls when user successfully logged in
-        chatHub.client.onConnected = function (id, userName, allUsers, messages) {
+            // Calls when user successfully logged in
+            chatHub.client.onConnected = function (id, userName, allUsers, messages) {
 
-            //setScreen(true);
+                //setScreen(true);
 
-            $('#hdId').val(id);
-            $('#hdUserName').val(userName);
-            $('#spanUser').html(userName);
+                $('#hdId').val(id);
+                $('#hdUserName').val(userName);
+                $('#spanUser').html(userName);
 
-            // Add All Users
-            for (i = 0; i < allUsers.length; i++) {
+                // Add All Users
+                for (i = 0; i < allUsers.length; i++) {
 
-                AddUser(chatHub, allUsers[i].ConnectionId, allUsers[i].UserName);
+                    AddUser(chatHub, allUsers[i].ConnectionId, allUsers[i].UserName);
+                }
+            }
+
+            // On New User Connected
+            chatHub.client.onNewUserConnected = function (id, name) {
+                AddUser(chatHub, id, name);
+            }
+
+            // On User Disconnected
+            chatHub.client.onUserDisconnected = function (id, userName) {
+
+                $('#' + id).remove();
+
+                var ctrId = 'private_' + id;
+                $('#' + ctrId).remove();
             }
         }
 
-        // On New User Connected
-        chatHub.client.onNewUserConnected = function (id, name) {
-            AddUser(chatHub, id, name);
+        function AddUser(chatHub, id, name) {
+
+            var userId = $('#hdId').val();
+
+            var code = "";
+
+            if (userId == id) {
+
+                //code = $('<div class="loginUser">' + name + "</div>");
+
+            }
+            else {
+                code = $(' <li class="media" id="' + id + '"><div class="media-body"><div class="media"><a class="pull-left">' +
+                    '<img class="media-object" style="max-height: 100px;" src="/Content/defaultAvatar.png" width="100"/>' +
+                    '</a><div class="pull-right"><a href="@Url.Action(MVC.UserProfile.Chat.Index())"><img class="media-object " src="/Content/Buttons/message.svg" width="48" height="48" /></a>'+
+                    '<a href="@Url.Action(MVC.UserProfile.Chat.Index())"><img class="media-object btn-delete" src="/Content/Buttons/delete.svg" width="48" height="48" margin-top="18px" /></a>'+
+                    '</div><div class="media-body"><h5>' + name + '</h5><small class="text-muted">Online</small></div></div></div');
+                $(code).dblclick(function () {
+
+                    var id = $(this).attr('id');
+
+                    if (userId != id)
+                        OpenPrivateChatWindow(chatHub, id, name);
+
+                });
+            }
+            $("#divusers").append(code);
         }
-
-        // On User Disconnected
-        chatHub.client.onUserDisconnected = function (id, userName) {
-
-            $('#' + id).remove();
-
-            var ctrId = 'private_' + id;
-            $('#' + ctrId).remove();
-        }
-    }
-
-    function AddUser(chatHub, id, name) {
-
-        var userId = $('#hdId').val();
-
-        var code = "";
-
-        if (userId == id) {
-
-            //code = $('<div class="loginUser">' + name + "</div>");
-
-        }
-        else {
-            code = $(' <li class="media" id="' + id + '"><div class="media-body"><div class="media"><a class="pull-left">' +
-                '<img class="media-object" style="max-height: 100px;" src="/Content/defaultAvatar.png" width="100"/>' +
-                '</a><div class="pull-right"><a href="@Url.Action(MVC.UserProfile.Chat.Index())"><img class="media-object " src="/Content/Buttons/message.svg" width="48" height="48" /></a>'+
-                '<a href="@Url.Action(MVC.UserProfile.Chat.Index())"><img class="media-object btn-delete" src="/Content/Buttons/delete.svg" width="48" height="48" margin-top="18px" /></a>'+
-                '</div><div class="media-body"><h5>' + name + '</h5><small class="text-muted">Online</small></div></div></div');
-            $(code).dblclick(function () {
-
-                var id = $(this).attr('id');
-
-                if (userId != id)
-                    OpenPrivateChatWindow(chatHub, id, name);
-
-            });
-        }
-        $("#divusers").append(code);
-    }
-</script>
+    </script>*@
 
 <style>
     img.btn-delete {
         margin-top: 26px;
-}
+    }
 </style>
 
 <br />
@@ -99,32 +101,36 @@
 <div class="col-md-6">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            ONLINE USERS
+            My band
         </div>
         <div class="panel-body">
             <ul class="media-list" id="divusers">
-                <li class="media">
-                    <div class="media-body">
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" style="max-height: 100px;" src="~/Content/defaultAvatar.png" width="100" height="100" />
-                            </a>
-                            <div class="pull-right">
-                                <a href="@Url.Action(MVC.UserProfile.Chat.Index())">
-                                    <img class="media-object " src="~/Content/Buttons/message.svg" width="48" height="48" />
+                @foreach (var item in Model)
+                {
+                    <li class="media">
+                        <div class="media-body">
+                            <div class="media">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object" src="data:@item.ImageContentType;base64,@item.ImageBase64" width="100" height="100" />
                                 </a>
-                                <a href="@Url.Action(MVC.UserProfile.Chat.Index())">
-                                    <img class="media-object btn-delete" src="~/Content/Buttons/delete.svg" width="48" height="48" margin-top="18px" />
-                                </a>
+                                <div class="pull-right">
+                                    <a href="@Url.Action(MVC.UserProfile.Chat.Index())">
+                                        <img class="media-object " src="~/Content/Buttons/message.svg" width="48" height="48" />
+                                    </a>
+                                    <a href="@Url.Action(MVC.UserProfile.Chat.Index())">
+                                        <img class="media-object btn-delete" src="~/Content/Buttons/delete.svg" width="48" height="48" margin-top="18px" />
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h5>@item.FirstName @item.LastName</h5>
+                                    <small class="text-muted">Online</small>
+                                </div>
                             </div>
-                            <div class="media-body">
-                                <h5>Alex Deo</h5>
-                                <small class="text-muted">Online</small>
-                            </div>
-                        </div>
 
-                    </div>
-                </li>
+                        </div>
+                    </li>
+                }
+
 
             </ul>
         </div>

@@ -9,5 +9,6 @@ namespace MusicWave.Areas.UserProfile.DAL
         IEnumerable<User> GetNotifications(Guid userId);
         void AcceptFriendship(Guid userId, Guid friendId);
         void RejectFriendship(Guid userId, Guid friendId);
+        IEnumerable<User> GetFriends(Guid userId);
     }
 }

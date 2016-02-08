@@ -33,7 +33,8 @@ namespace MusicWave.Areas.UserProfile.Controllers
         public virtual ActionResult Friends()
         {
             var user = (User)TempData["user"];
-            return View(user);
+            IEnumerable<User> friends = _dbInfo.GetFriends(user.Id);
+            return PartialView(friends);
         }
 
         public virtual ActionResult GetUsers(string name)
