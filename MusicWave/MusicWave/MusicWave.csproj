@@ -52,8 +52,24 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Gallio, Version=3.3.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gallio.3.3.1\lib\NET40\Gallio.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Gallio40, Version=3.3.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gallio.3.3.1\lib\NET40\Gallio40.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="jQuery.Validation.Unobtrusive.Native, Version=1.1.5637.24484, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\jQuery.Validation.Unobtrusive.Native.MVC5.1.2.0\lib\net45\jQuery.Validation.Unobtrusive.Native.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MbUnit, Version=3.3.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gallio.3.3.1\lib\NET40\MbUnit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MbUnit40, Version=3.3.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gallio.3.3.1\lib\NET40\MbUnit40.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -216,6 +232,7 @@
     <Compile Include="Areas\AdminProfile\DAL\UserModel.cs" />
     <Compile Include="Areas\UserProfile\DAL\DbInfo.cs" />
     <Compile Include="Areas\UserProfile\DAL\IDbInfo.cs" />
+    <Compile Include="Areas\UserProfile\Controllers\UserBaseController.cs" />
     <Compile Include="Areas\UserProfile\Models\MessageDetail.cs" />
     <Compile Include="Areas\Error\ErrorAreaRegistration.cs" />
     <Compile Include="Areas\Home\HomeAreaRegistration.cs" />
@@ -240,6 +257,7 @@
     <Compile Include="Models\FriendRelationship.cs">
       <DependentUpon>PeopleModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Singleton.cs" />
     <Compile Include="SignalRChatHub.cs" />
     <Compile Include="Home.HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>

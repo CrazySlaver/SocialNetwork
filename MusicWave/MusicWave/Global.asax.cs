@@ -35,6 +35,7 @@ namespace MusicWave
 
             
         }
+        
         #region if error
         //protected void Application_Error(object sender, EventArgs e)
         //{
@@ -79,7 +80,7 @@ namespace MusicWave
         //            break;
         //    }
         //    Server.ClearError();
-            
+
         //    IController controller = new ErrorController();
         //    controller.Execute(new RequestContext(new HttpContextWrapper(Context), routeData));
 

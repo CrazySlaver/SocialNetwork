@@ -10,7 +10,7 @@
 <!-- Add reference to the auto-generated proxy file -->
 <script src="/signalr/hubs"></script>
 
-@*<script type="text/javascript">
+<script type="text/javascript">
         var chatHub = $.connection.signalRChatHub;
 
         registerClientMethods(chatHub);
@@ -21,8 +21,8 @@
 
         function registerEvents(chatHub) {
 
-            var name = '@Model.FirstName' + ' ' + '@Model.LastName';
-            chatHub.server.connect(name);
+            @*var name = '@Model.FirstName' + ' ' + '@Model.LastName';
+            chatHub.server.connect(name);*@
 
         }
 
@@ -87,7 +87,7 @@
             }
             $("#divusers").append(code);
         }
-    </script>*@
+    </script>
 
 <style>
     img.btn-delete {

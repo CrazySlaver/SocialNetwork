@@ -16,8 +16,8 @@ namespace MusicWave
             routes.MapRoute(
                 name: "Default",
                 url: "{area}/{controller}/{action}/{id}",
-                defaults: new {area="Home", controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+                defaults: new {controller = "Home", action = "Index", id = UrlParameter.Optional }
+            ).DataTokens.Add("area", "Home");
         }
     }
 }

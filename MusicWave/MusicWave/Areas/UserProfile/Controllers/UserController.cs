@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web.Helpers;
 using System.Web.Mvc;
 using MusicWave.Areas.Account.AccessToDB;
 using MusicWave.Areas.UserProfile.DAL;
@@ -11,32 +10,31 @@ namespace MusicWave.Areas.UserProfile.Controllers
 {
     //TODO сделать странички для админа и суперадмина
     [Authorize(Roles = "user")]
-
-    public partial class UserController : Controller
+    public partial class UserController : UserBaseController
     {
         private IUserDb _userDb;
         private IDbInfo _dbInfo;
-        // GET: User
+
         public UserController(IUserDb userDb, IDbInfo dbInfo)
         {
             _userDb = userDb;
             _dbInfo = dbInfo;
         }
+
         [AccessToUserPageActionFilter]
         public virtual ActionResult Index()
         {
-            var user = (User)TempData["user"];
-            return View(user);
+            return View(User);
         }
 
         [AccessToUserPageActionFilter]
         public virtual ActionResult Friends()
         {
-            var user = (User)TempData["user"];
-            IEnumerable<User> friends = _dbInfo.GetFriends(user.Id);
+            IEnumerable<User> friends = _dbInfo.GetFriends(User.Id);
             return PartialView(friends);
         }
 
+        [AccessToUserPageActionFilter]
         public virtual ActionResult GetUsers(string name)
         {
             if (Request.IsAjaxRequest())
@@ -50,10 +48,9 @@ namespace MusicWave.Areas.UserProfile.Controllers
         [AccessToUserPageActionFilter]
         public virtual ActionResult AddUserToFriend(Guid friendId)
         {
-            var currentUser = (User)TempData["user"];
             if (friendId != null)
             {
-                bool flag = _userDb.AddUserToFriend(currentUser.Id, friendId);
+                bool flag = _userDb.AddUserToFriend(User.Id, friendId);
                 if (flag)
                 {
                     //return PartialView("_OkButton");
@@ -67,12 +64,11 @@ namespace MusicWave.Areas.UserProfile.Controllers
             return RedirectToAction(MVC.UserProfile.User.Index());
         }
         //TODO логирование и юнит тесты
-        //TODO убрать AccessToUserPageActionFilter (кастомный контроллер)
+        
         [AccessToUserPageActionFilter]
         public virtual ActionResult GetNotification()
         {
-            var user = (User)TempData["user"];
-            IEnumerable<User> notifications = _dbInfo.GetNotifications(user.Id);
+            IEnumerable<User> notifications = _dbInfo.GetNotifications(User.Id);
             //var tuple = new Tuple<User, IEnumerable<Notification>>(user, notifications);
             return PartialView("_Notification", notifications);
         }
@@ -80,8 +76,7 @@ namespace MusicWave.Areas.UserProfile.Controllers
         [AccessToUserPageActionFilter]
         public virtual ActionResult AcceptFriendship(Guid friendId)
         {
-            var user = (User)TempData["user"];
-            _dbInfo.AcceptFriendship(user.Id, friendId);
+            _dbInfo.AcceptFriendship(User.Id, friendId);
             return new EmptyResult();
             //return Content(friendId.ToString(), "application/json");
         }
@@ -89,8 +84,7 @@ namespace MusicWave.Areas.UserProfile.Controllers
         [AccessToUserPageActionFilter]
         public virtual ActionResult RejectFriendship(Guid friendId)
         {
-            var user = (User)TempData["user"];
-            _dbInfo.RejectFriendship(user.Id,friendId);
+            _dbInfo.RejectFriendship(User.Id,friendId);
             return new EmptyResult();
         }
     }
