@@ -39,11 +39,9 @@ namespace T4MVC.UserProfile
             public class _ViewNamesClass
             {
                 public readonly string _MessageBox = "_MessageBox";
-                public readonly string _Notification = "_Notification";
                 public readonly string _PartialMenu = "_PartialMenu";
             }
             public readonly string _MessageBox = "~/Areas/UserProfile/Views/Shared/_MessageBox.cshtml";
-            public readonly string _Notification = "~/Areas/UserProfile/Views/Shared/_Notification.cshtml";
             public readonly string _PartialMenu = "~/Areas/UserProfile/Views/Shared/_PartialMenu.cshtml";
         }
     }

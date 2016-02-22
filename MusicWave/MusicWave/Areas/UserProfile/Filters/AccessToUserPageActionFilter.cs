@@ -14,9 +14,22 @@ namespace MusicWave.Areas.UserProfile.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (DbInfo.CheckUserCookie(filterContext) == null)
+            User user = null;
+            using (var db = new PeopleDBEntities())
             {
-                throw new NullReferenceException();
+                try
+                {
+                    HttpCookie authCookie = filterContext.HttpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
+                    FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+
+                    string email = ticket.Name;
+                    user = db.User.FirstOrDefault(e => e.Email == email);
+                }
+                catch (NullReferenceException)
+                {
+                    new HttpException(403, "Forbidden");
+                }
+
             }
         }
     }

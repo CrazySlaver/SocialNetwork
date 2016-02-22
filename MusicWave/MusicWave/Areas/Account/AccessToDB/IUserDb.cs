@@ -10,5 +10,7 @@ namespace MusicWave.Areas.Account.AccessToDB
         bool CheckEmail(string email);
         IEnumerable<User> GetSeekingUser(string name);
         bool AddUserToFriend(Guid userId, Guid friendId);
+
+        void RemoveUserFromFriend(Guid userId, Guid friendId);
     }
 }

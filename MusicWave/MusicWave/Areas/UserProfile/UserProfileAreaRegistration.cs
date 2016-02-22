@@ -17,7 +17,8 @@ namespace MusicWave.Areas.UserProfile
             context.MapRoute(
                 "UserProfile_default",
                 "UserProfile/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { controller="User", action = "Index", id = UrlParameter.Optional }
+                
             );
         }
     }

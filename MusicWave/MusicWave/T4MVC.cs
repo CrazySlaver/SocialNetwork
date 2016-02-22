@@ -74,6 +74,7 @@ namespace T4MVC
     {
         public readonly string Name = "UserProfile";
         public MusicWave.Areas.UserProfile.Controllers.ChatController Chat = new MusicWave.Areas.UserProfile.Controllers.T4MVC_ChatController();
+        public MusicWave.Areas.UserProfile.Controllers.UserBaseController UserBase = new MusicWave.Areas.UserProfile.Controllers.T4MVC_UserBaseController();
         public MusicWave.Areas.UserProfile.Controllers.UserController User = new MusicWave.Areas.UserProfile.Controllers.T4MVC_UserController();
         public T4MVC.UserProfile.SharedController Shared = new T4MVC.UserProfile.SharedController();
     }
@@ -97,7 +98,7 @@ internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.Action
         this.InitMVCT4Result(area, controller, action, protocol);
     }
      
-    public override void ExecuteResult(System.Web.Mvc.ControllerContext context) { }
+    public override void ExecuteResult(System.Web.Mvc.ControllerContext  fhg ) { }
     
     public string Controller { get; set; }
     public string Action { get; set; }

@@ -1,20 +1,6 @@
 ﻿@using Microsoft.Ajax.Utilities
 <ul class="nav navbar-nav">
-    @if (Request.IsAuthenticated)
-    {
-        if (User.IsInRole("user"))
-        {
-            <li>@Html.ActionLink("Home", "Index", "User", new { area = "UserProfile" }, null)</li>
-        }
-        if (User.IsInRole("admin"))
-        {
-            <li>@Html.ActionLink("Home", "Index", "Admin", new { area = "AdminProfile" }, null)</li>
-        }
-    }
-    else
-    {
-        <li>@Html.ActionLink("Home", MVC.Home.Home.Index(), null)</li>
-    }
+   
     <li>@Html.ActionLink("About", "About", "Home", new { area = "Home" }, null)</li>
     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "Home" }, null)</li>
 
@@ -22,8 +8,9 @@
     {
         if (User.IsInRole("user"))
         {
-            using (Ajax.BeginForm(MVC.UserProfile.User.GetUsers(), new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "form-container" }, new { @class = "navbar-form navbar-left", role = "search" }))
+            using (Html.BeginForm(MVC.UserProfile.User.GetUsers(), FormMethod.Post, new { @class = "navbar-form navbar-left", role = "search" }))
             {
+                @Html.AntiForgeryToken()
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search" id="name" name="name">
                     <span class="input-group-btn">

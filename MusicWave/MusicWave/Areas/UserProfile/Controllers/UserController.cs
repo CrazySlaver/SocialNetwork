@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using MusicWave.Areas.Account.AccessToDB;
 using MusicWave.Areas.UserProfile.DAL;
 using MusicWave.Areas.UserProfile.Filters;
@@ -31,18 +32,19 @@ namespace MusicWave.Areas.UserProfile.Controllers
         public virtual ActionResult Friends()
         {
             IEnumerable<User> friends = _dbInfo.GetFriends(User.Id);
-            return PartialView(friends);
+            return View(friends);
         }
 
         [AccessToUserPageActionFilter]
+        [ValidateAntiForgeryToken]
         public virtual ActionResult GetUsers(string name)
         {
-            if (Request.IsAjaxRequest())
+            if (!String.IsNullOrEmpty(name))
             {
                 IEnumerable<User> users = _userDb.GetSeekingUser(name);
                 return PartialView(users);
             }
-            return View();
+            return Redirect(Request.UrlReferrer.PathAndQuery);
         }
 
         [AccessToUserPageActionFilter]
@@ -63,14 +65,26 @@ namespace MusicWave.Areas.UserProfile.Controllers
             }
             return RedirectToAction(MVC.UserProfile.User.Index());
         }
+
+        [AccessToUserPageActionFilter]
+        public virtual ActionResult RemoveUserFromFriend(Guid friendId)
+        {
+            if (friendId != null)
+            {
+                _userDb.RemoveUserFromFriend(User.Id, friendId);
+                return new EmptyResult();
+
+            }
+            return RedirectToAction(MVC.UserProfile.User.Index());
+        }
         //TODO логирование и юнит тесты
-        
+
         [AccessToUserPageActionFilter]
         public virtual ActionResult GetNotification()
         {
             IEnumerable<User> notifications = _dbInfo.GetNotifications(User.Id);
             //var tuple = new Tuple<User, IEnumerable<Notification>>(user, notifications);
-            return PartialView("_Notification", notifications);
+            return PartialView("Notification", notifications);
         }
 
         [AccessToUserPageActionFilter]
@@ -78,7 +92,6 @@ namespace MusicWave.Areas.UserProfile.Controllers
         {
             _dbInfo.AcceptFriendship(User.Id, friendId);
             return new EmptyResult();
-            //return Content(friendId.ToString(), "application/json");
         }
 
         [AccessToUserPageActionFilter]

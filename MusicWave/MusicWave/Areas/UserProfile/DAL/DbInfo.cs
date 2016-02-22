@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-using System.Web.Security;
 using EntityFramework.Extensions;
 using MusicWave.Models;
 
@@ -22,6 +18,7 @@ namespace MusicWave.Areas.UserProfile.DAL
                                      where userId == n.UserId && n.status == false
                                      join u in db.User on n.FriendId equals u.Id
                                      select u).ToList();
+               
                 notify = notifications;
 
             }
@@ -65,51 +62,6 @@ namespace MusicWave.Areas.UserProfile.DAL
             }
             return friends;
         }
-
-        public static User CheckUserCookie(ActionExecutingContext context)
-        {
-            User user = null;
-            using (var db = new PeopleDBEntities())
-            {
-                try
-                {
-                    HttpCookie authCookie = context.HttpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
-                    FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
-
-                    string email = ticket.Name;
-                    user = db.User.FirstOrDefault(e => e.Email == email);
-                }
-                catch (NullReferenceException)
-                {
-                    new HttpException(403, "Forbidden");
-                }
-
-            }
-            return user;
-        }
-
-        public static User CheckUserCookie(RequestContext context)
-        {
-            User user = null;
-            using (var db = new PeopleDBEntities())
-            {
-                try
-                {
-                    HttpCookie authCookie = context.HttpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
-                    FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
-
-                    string email = ticket.Name;
-                    user = db.User.FirstOrDefault(e => e.Email == email);
-                }
-                catch (NullReferenceException)
-                {
-                    new HttpException(403, "Forbidden");
-                }
-
-            }
-            return user;
-        }
-        
     }
 }
 

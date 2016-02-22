@@ -9,7 +9,7 @@ using MusicWave.Models;
 
 namespace MusicWave.Areas.UserProfile.Controllers
 {
-    public class UserBaseController : Controller
+    public partial class UserBaseController : Controller
     {
         private User _user = null;
 
@@ -17,15 +17,26 @@ namespace MusicWave.Areas.UserProfile.Controllers
         {
             get { return _user; }
         }
-        
+
         protected override void Initialize(RequestContext requestContext)
         {
             ControllerContext = new ControllerContext(requestContext, this);
-            _user = DbInfo.CheckUserCookie(requestContext);
-            if (_user == null)
+
+            using (var db = new PeopleDBEntities())
             {
-                //TODO передача ошибки вверх по стеку
-                throw new NullReferenceException();
+                try
+                {
+                    HttpCookie authCookie = requestContext.HttpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
+                    FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+
+                    string email = ticket.Name;
+                    _user = db.User.FirstOrDefault(e => e.Email == email);
+                }
+                catch (NullReferenceException)
+                {
+                    new HttpException(403, "Forbidden");
+                }
+
             }
         }
     }

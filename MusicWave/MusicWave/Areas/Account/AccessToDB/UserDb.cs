@@ -4,6 +4,7 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web.Helpers;
+using EntityFramework.Extensions;
 using MusicWave.Models;
 
 namespace MusicWave.Areas.Account.AccessToDB
@@ -173,6 +174,16 @@ namespace MusicWave.Areas.Account.AccessToDB
 
             }
             return result;
+        }
+
+        public void RemoveUserFromFriend(Guid userId, Guid friendId)
+        {
+            using (var db = new PeopleDBEntities())
+            {
+                var accenpt = db.FriendRelationship.Where(f => f.UserId == userId && f.FriendId == friendId && f.status == true).Delete();
+                var accenptі = db.FriendRelationship.Where(f => f.UserId == friendId && f.FriendId == userId && f.status == true).Delete();
+                db.SaveChanges();
+            }
         }
     }
 }

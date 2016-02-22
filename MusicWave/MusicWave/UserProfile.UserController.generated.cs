@@ -70,6 +70,12 @@ namespace MusicWave.Areas.UserProfile.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult RemoveUserFromFriend()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveUserFromFriend);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult AcceptFriendship()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AcceptFriendship);
@@ -100,6 +106,7 @@ namespace MusicWave.Areas.UserProfile.Controllers
             public readonly string Friends = "Friends";
             public readonly string GetUsers = "GetUsers";
             public readonly string AddUserToFriend = "AddUserToFriend";
+            public readonly string RemoveUserFromFriend = "RemoveUserFromFriend";
             public readonly string GetNotification = "GetNotification";
             public readonly string AcceptFriendship = "AcceptFriendship";
             public readonly string RejectFriendship = "RejectFriendship";
@@ -112,6 +119,7 @@ namespace MusicWave.Areas.UserProfile.Controllers
             public const string Friends = "Friends";
             public const string GetUsers = "GetUsers";
             public const string AddUserToFriend = "AddUserToFriend";
+            public const string RemoveUserFromFriend = "RemoveUserFromFriend";
             public const string GetNotification = "GetNotification";
             public const string AcceptFriendship = "AcceptFriendship";
             public const string RejectFriendship = "RejectFriendship";
@@ -131,6 +139,14 @@ namespace MusicWave.Areas.UserProfile.Controllers
         public ActionParamsClass_AddUserToFriend AddUserToFriendParams { get { return s_params_AddUserToFriend; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_AddUserToFriend
+        {
+            public readonly string friendId = "friendId";
+        }
+        static readonly ActionParamsClass_RemoveUserFromFriend s_params_RemoveUserFromFriend = new ActionParamsClass_RemoveUserFromFriend();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_RemoveUserFromFriend RemoveUserFromFriendParams { get { return s_params_RemoveUserFromFriend; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_RemoveUserFromFriend
         {
             public readonly string friendId = "friendId";
         }
@@ -163,10 +179,12 @@ namespace MusicWave.Areas.UserProfile.Controllers
                 public readonly string Friends = "Friends";
                 public readonly string GetUsers = "GetUsers";
                 public readonly string Index = "Index";
+                public readonly string Notification = "Notification";
             }
             public readonly string Friends = "~/Areas/UserProfile/Views/User/Friends.cshtml";
             public readonly string GetUsers = "~/Areas/UserProfile/Views/User/GetUsers.cshtml";
             public readonly string Index = "~/Areas/UserProfile/Views/User/Index.cshtml";
+            public readonly string Notification = "~/Areas/UserProfile/Views/User/Notification.cshtml";
         }
     }
 
@@ -218,6 +236,18 @@ namespace MusicWave.Areas.UserProfile.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddUserToFriend);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "friendId", friendId);
             AddUserToFriendOverride(callInfo, friendId);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void RemoveUserFromFriendOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Guid friendId);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult RemoveUserFromFriend(System.Guid friendId)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveUserFromFriend);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "friendId", friendId);
+            RemoveUserFromFriendOverride(callInfo, friendId);
             return callInfo;
         }
 
